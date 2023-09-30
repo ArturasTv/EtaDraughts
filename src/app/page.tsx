@@ -1,8 +1,8 @@
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 
 export default function Home() {
   return (
-    <main className="flex justify-center items-center h-screen">
+    <main className='flex h-screen items-center justify-center'>
       <Button>clean project</Button>
     </main>
   );
