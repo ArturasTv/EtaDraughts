@@ -34,8 +34,10 @@
     "@typescript-eslint/no-explicit-any": "error",
     "react/prop-types": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
+    "react/jsx-one-expression-per-line": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
     "jsx-quotes": ["error", "prefer-single"],
+    "eslint-disable-next-line": "off",
     "object-curly-newline": "off",
     "import/extensions": [
       "error",

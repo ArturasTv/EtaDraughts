@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
@@ -14,8 +15,8 @@ interface Props extends PropsWithChildren {}
 
 function RootLayout({ children }: Props) {
   return (
-    <html lang='en'>
-      <body className={inter.className}>{children}</body>
+    <html className='h-full' lang='en'>
+      <body className={cn(inter.className, 'h-full')}>{children}</body>
     </html>
   );
 }
