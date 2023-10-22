@@ -8,8 +8,11 @@ import useValidation from '@/hooks/useValidation';
 import { Button } from '@/components/ui/Button/Button';
 import { Form } from '@/components/ui/Form/Form';
 import FormField from '@/components/ui/Form/FormField/FormField';
+import { useToast } from '@/components/ui/Toaster/hooks/useToast';
 
 function SignInForm() {
+  const { toast } = useToast();
+
   const { fieldRequired } = useValidation();
 
   const FormSchema = z.object({
@@ -21,8 +24,11 @@ function SignInForm() {
     resolver: zodResolver(FormSchema),
   });
 
-  function onSubmit() {
-    return null;
+  function onSubmit(values: z.infer<typeof FormSchema>) {
+    toast({
+      title: 'Form values',
+      description: JSON.stringify(values, null, 2),
+    });
   }
 
   return (

@@ -3,6 +3,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { PropsWithChildren } from 'react';
+import { Toaster } from '@/components/ui/Toaster/Toaster';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -16,7 +17,10 @@ interface Props extends PropsWithChildren {}
 function RootLayout({ children }: Props) {
   return (
     <html className='h-full' lang='en'>
-      <body className={cn(inter.className, 'h-full')}>{children}</body>
+      <body className={cn(inter.className, 'h-full')}>
+        {children}
+        <Toaster />
+      </body>
     </html>
   );
 }
