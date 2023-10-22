@@ -5,15 +5,9 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import * as z from 'zod';
 import useValidation from '@/hooks/useValidation';
 import { Button } from '@/components/ui/Button/Button';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from '@/components/ui/Form/Form';
-import { Input } from '@/components/ui/Input/Input';
+import { Form } from '@/components/ui/Form/Form';
 import { DEFAULT_EMAIL } from '@/constants/form';
+import FormField from '@/components/ui/Form/FormField/FormField';
 
 function PasswordRecoveryForm() {
   const { emailFieldRequired } = useValidation();
@@ -36,21 +30,11 @@ function PasswordRecoveryForm() {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-2'>
         <FormField
-          control={form.control}
           name='email'
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  type='email'
-                  placeholder={DEFAULT_EMAIL}
-                  {...field}
-                  hasError={!!form.formState.errors.email}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          control={form.control}
+          type='email'
+          placeholder={DEFAULT_EMAIL}
+          hasError={!!form.formState.errors.email}
         />
         <Button type='submit' className='w-full'>
           Send email

@@ -5,17 +5,11 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import * as z from 'zod';
 import useValidation from '@/hooks/useValidation';
 import { Button } from '@/components/ui/Button/Button';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from '@/components/ui/Form/Form';
-import { Input } from '@/components/ui/Input/Input';
+import FormField from '@/components/ui/Form/FormField/FormField';
 import { DEFAULT_EMAIL } from '@/constants/form';
 import { useRouter } from 'next/navigation';
 import AppRoutes from '@/constants/appRoutes';
+import { Form } from '@/components/ui/Form/Form';
 
 function SignUpFirstStepForm() {
   const router = useRouter();
@@ -40,21 +34,11 @@ function SignUpFirstStepForm() {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-2'>
         <FormField
-          control={form.control}
           name='email'
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  type='email'
-                  placeholder={DEFAULT_EMAIL}
-                  {...field}
-                  hasError={!!form.formState.errors.email}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          control={form.control}
+          type='email'
+          hasError={!!form.formState.errors.email}
+          placeholder={DEFAULT_EMAIL}
         />
         <Button type='submit' className='w-full'>
           Sign Up with Email

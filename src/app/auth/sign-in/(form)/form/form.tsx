@@ -6,14 +6,8 @@ import * as z from 'zod';
 import useValidation from '@/hooks/useValidation';
 
 import { Button } from '@/components/ui/Button/Button';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from '@/components/ui/Form/Form';
-import { Input } from '@/components/ui/Input/Input';
+import { Form } from '@/components/ui/Form/Form';
+import FormField from '@/components/ui/Form/FormField/FormField';
 
 function SignInForm() {
   const { fieldRequired } = useValidation();
@@ -35,38 +29,17 @@ function SignInForm() {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-2'>
         <FormField
-          control={form.control}
           name='username'
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  type='text'
-                  placeholder='Username'
-                  {...field}
-                  hasError={!!form.formState.errors.username}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          control={form.control}
+          placeholder='Username'
+          hasError={!!form.formState.errors.username}
         />
         <FormField
-          control={form.control}
           name='password'
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  type='password'
-                  placeholder='Password'
-                  {...field}
-                  hasError={!!form.formState.errors.password}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          control={form.control}
+          type='password'
+          placeholder='Password'
+          hasError={!!form.formState.errors.password}
         />
         <Button type='submit' className='w-full'>
           Sign In

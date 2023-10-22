@@ -5,15 +5,9 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import * as z from 'zod';
 import useValidation from '@/hooks/useValidation';
 import { Button } from '@/components/ui/Button/Button';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from '@/components/ui/Form/Form';
-import { Input } from '@/components/ui/Input/Input';
+import { Form } from '@/components/ui/Form/Form';
 import { useSearchParams } from 'next/navigation';
+import FormField from '@/components/ui/Form/FormField/FormField';
 
 function SignUpSecondStepForm() {
   const searchParams = useSearchParams();
@@ -53,71 +47,31 @@ function SignUpSecondStepForm() {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-2'>
         <FormField
-          control={form.control}
           name='email'
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  type='email'
-                  hasError={!!form.formState.errors.email}
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          control={form.control}
+          type='email'
+          hasError={!!form.formState.errors.email}
+          placeholder='Email'
         />
         <FormField
-          control={form.control}
           name='username'
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  type='text'
-                  hasError={!!form.formState.errors.username}
-                  placeholder='Username'
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          control={form.control}
+          hasError={!!form.formState.errors.username}
+          placeholder='Username'
         />
         <FormField
-          control={form.control}
           name='password'
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  type='password'
-                  hasError={!!form.formState.errors.password}
-                  placeholder='Password'
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          control={form.control}
+          type='password'
+          hasError={!!form.formState.errors.password}
+          placeholder='Password'
         />
         <FormField
-          control={form.control}
           name='confirmPassword'
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  type='password'
-                  hasError={!!form.formState.errors.confirmPassword}
-                  placeholder='Confirm Password'
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          control={form.control}
+          type='password'
+          hasError={!!form.formState.errors.confirmPassword}
+          placeholder='Confirm Password'
         />
         <Button type='submit' className='w-full'>
           Sign Up
