@@ -27,7 +27,7 @@ function SignInForm() {
   function onSubmit(values: z.infer<typeof FormSchema>) {
     toast({
       title: 'Form values',
-      description: JSON.stringify(values, null, 2),
+      description: <pre>{JSON.stringify(values, null, 2)}</pre>,
     });
   }
 
