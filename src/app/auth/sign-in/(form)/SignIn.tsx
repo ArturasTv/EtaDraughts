@@ -2,6 +2,7 @@
 import React from 'react';
 import Typography from '@/components/ui/Typography/Typography';
 import Link from 'next/link';
+import AppRoutes from '@/constants/appRoutes';
 import SignInForm from './form/form';
 
 function SignIn() {
@@ -20,7 +21,7 @@ function SignIn() {
       <Typography type='p' className='px-12 text-center'>
         <Link
           className='hover:text-primary'
-          href='/auth/sign-in/password-recovery'
+          href={AppRoutes.AUTH.SIGN_IN.PASSWORD_RECOVERY.INDEX}
         >
           Forgot your password?
         </Link>

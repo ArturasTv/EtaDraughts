@@ -5,6 +5,12 @@ const AppRoutes = {
   AUTH: {
     SIGN_IN: {
       INDEX: '/auth/sign-in',
+      PASSWORD_RECOVERY: {
+        INDEX: '/auth/sign-in/password-recovery',
+      },
+      PASSWROD_CHANGE: {
+        INDEX: '/auth/sign-in/password-change',
+      },
     },
     SIGN_UP: {
       FIRST_STEP: {

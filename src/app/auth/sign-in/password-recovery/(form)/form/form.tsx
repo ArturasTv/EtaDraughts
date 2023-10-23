@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/Button/Button';
 import { Form } from '@/components/ui/Form/Form';
 import { DEFAULT_EMAIL } from '@/constants/form';
 import FormField from '@/components/ui/Form/FormField/FormField';
+import useResetPassword from '@/_api/mutations/resetPassword';
 
 function PasswordRecoveryForm() {
   const { emailFieldRequired } = useValidation();
@@ -22,8 +23,12 @@ function PasswordRecoveryForm() {
     resolver: zodResolver(FormSchema),
   });
 
-  const onSubmit: SubmitHandler<ValidationSchema> = () => {
-    // TODO add logic
+  const { mutate, isPending: isLoading } = useResetPassword();
+
+  const onSubmit: SubmitHandler<ValidationSchema> = (values) => {
+    mutate({
+      email: values.email,
+    });
   };
 
   return (
@@ -36,7 +41,7 @@ function PasswordRecoveryForm() {
           placeholder={DEFAULT_EMAIL}
           hasError={!!form.formState.errors.email}
         />
-        <Button type='submit' className='w-full'>
+        <Button isLoading={isLoading} type='submit' className='w-full'>
           Send email
         </Button>
       </form>

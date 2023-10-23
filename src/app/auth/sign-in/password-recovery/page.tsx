@@ -2,19 +2,22 @@ import { Button } from '@/components/ui/Button/Button';
 import AppRoutes from '@/constants/appRoutes';
 import React from 'react';
 import Link from 'next/link';
+import Page from '@/components/containers/Page/Page';
 import PasswordRecovery from './(form)/PasswordRecovery';
 
-function Page() {
+function PasswordRecoveryPage() {
   return (
-    <div className='flex h-full w-full flex-col'>
-      <Button className='ml-auto' variant='ghost' asChild>
-        <Link href={AppRoutes.AUTH.SIGN_IN.INDEX}>Back</Link>
-      </Button>
-      <div className='flex h-full items-center justify-center'>
-        <PasswordRecovery />
+    <Page permission='unauthenticated'>
+      <div className='flex h-full w-full flex-col'>
+        <Button className='ml-auto' variant='ghost' asChild>
+          <Link href={AppRoutes.AUTH.SIGN_IN.INDEX}>Back</Link>
+        </Button>
+        <div className='flex h-full items-center justify-center'>
+          <PasswordRecovery />
+        </div>
       </div>
-    </div>
+    </Page>
   );
 }
 
-export default Page;
+export default PasswordRecoveryPage;

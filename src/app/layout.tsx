@@ -4,6 +4,10 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { PropsWithChildren } from 'react';
 import { Toaster } from '@/components/ui/Toaster/Toaster';
+import AuthProvider from '@/providers/AuthProvider/AuthProvider';
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { cookies } from 'next/headers';
+import ReactQueryProvider from '@/providers/ReactQueryProvider/ReactQueryProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -14,12 +18,24 @@ export const metadata: Metadata = {
 
 interface Props extends PropsWithChildren {}
 
-function RootLayout({ children }: Props) {
+async function RootLayout({ children }: Props) {
+  const supabase = createServerComponentClient({ cookies });
+
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  const accessToken = session?.access_token || null;
+
   return (
     <html className='h-full' lang='en'>
       <body className={cn(inter.className, 'h-full')}>
-        {children}
-        <Toaster />
+        <ReactQueryProvider>
+          <AuthProvider accessToken={accessToken}>
+            {children}
+            <Toaster />
+          </AuthProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   );

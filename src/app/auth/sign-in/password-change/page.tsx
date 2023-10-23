@@ -1,23 +1,23 @@
-import React from 'react';
 import { Button } from '@/components/ui/Button/Button';
-import Link from 'next/link';
 import AppRoutes from '@/constants/appRoutes';
+import React from 'react';
+import Link from 'next/link';
 import Page from '@/components/containers/Page/Page';
-import SignUpFirstStep from './(form)/SignUpFirstStep';
+import PasswordChange from './(form)/PasswordChange';
 
-function SignUpFirstStepPage() {
+function PasswordChangePage() {
   return (
-    <Page permission='unauthenticated'>
+    <Page permission='authenticated'>
       <div className='flex h-full w-full flex-col'>
         <Button className='ml-auto' variant='ghost' asChild>
-          <Link href={AppRoutes.AUTH.SIGN_IN.INDEX}>Login</Link>
+          <Link href={AppRoutes.AUTH.SIGN_IN.INDEX}>Back</Link>
         </Button>
         <div className='flex h-full items-center justify-center'>
-          <SignUpFirstStep />
+          <PasswordChange />
         </div>
       </div>
     </Page>
   );
 }
 
-export default SignUpFirstStepPage;
+export default PasswordChangePage;

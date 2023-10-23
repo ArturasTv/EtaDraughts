@@ -1,7 +1,11 @@
 import React from 'react';
-import { IconBrandGmail, TablerIconsProps } from '@tabler/icons-react';
+import {
+  IconBrandGmail,
+  IconLoader,
+  TablerIconsProps,
+} from '@tabler/icons-react';
 
-type IconNames = 'gmail';
+type IconNames = 'gmail' | 'loader';
 type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 interface Props extends TablerIconsProps {
@@ -17,10 +21,11 @@ function Icon({ name, size = 'md', ...props }: Props) {
     lg: 24,
     xl: 32,
   };
+
   return (
-    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       {name === 'gmail' && <IconBrandGmail size={mapSize[size]} {...props} />}
+      {name === 'loader' && <IconLoader size={mapSize[size]} {...props} />}
     </>
   );
 }

@@ -8,15 +8,13 @@ import useValidation from '@/hooks/useValidation';
 import { Button } from '@/components/ui/Button/Button';
 import { Form } from '@/components/ui/Form/Form';
 import FormField from '@/components/ui/Form/FormField/FormField';
-import { useToast } from '@/components/ui/Toaster/hooks/useToast';
+import useSignIn from '@/_api/mutations/signIn';
 
 function SignInForm() {
-  const { toast } = useToast();
-
-  const { fieldRequired } = useValidation();
+  const { fieldRequired, emailFieldRequired } = useValidation();
 
   const FormSchema = z.object({
-    username: fieldRequired,
+    email: emailFieldRequired,
     password: fieldRequired,
   });
 
@@ -24,21 +22,23 @@ function SignInForm() {
     resolver: zodResolver(FormSchema),
   });
 
-  function onSubmit(values: z.infer<typeof FormSchema>) {
-    toast({
-      title: 'Form values',
-      description: <pre>{JSON.stringify(values, null, 2)}</pre>,
+  const { mutate, isPending: isLoading } = useSignIn();
+
+  const onSubmit = async (values: z.infer<typeof FormSchema>) => {
+    mutate({
+      email: values.email,
+      password: values.password,
     });
-  }
+  };
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-2'>
         <FormField
-          name='username'
+          name='email'
           control={form.control}
-          placeholder='Username'
-          hasError={!!form.formState.errors.username}
+          placeholder='Email'
+          hasError={!!form.formState.errors.email}
         />
         <FormField
           name='password'
@@ -47,7 +47,7 @@ function SignInForm() {
           placeholder='Password'
           hasError={!!form.formState.errors.password}
         />
-        <Button type='submit' className='w-full'>
+        <Button isLoading={isLoading} type='submit' className='w-full'>
           Sign In
         </Button>
       </form>
