@@ -9,6 +9,9 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import ReactQueryProvider from '@/providers/ReactQueryProvider/ReactQueryProvider';
 
+// TODO: This is temporary until we have a better solution
+export const dynamic = 'force-dynamic';
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
