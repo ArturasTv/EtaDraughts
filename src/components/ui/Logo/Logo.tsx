@@ -3,13 +3,23 @@ import React from 'react';
 
 interface Props {
   className?: string;
+  variant?: 'light' | 'dark';
   width?: number;
   height?: number;
 }
 
-function Logo({ className, width = 36, height = 36 }: Props) {
+function Logo({
+  className,
+  width = 36,
+  height = 36,
+  variant = 'light',
+}: Props) {
   const combinedClassNames = [
-    'flex items-center space-x-2 fill-white text-white',
+    'flex items-center space-x-2',
+    {
+      'text-white fill-white': variant === 'light',
+      'text-black fill-black': variant === 'dark',
+    },
     className,
   ];
 
