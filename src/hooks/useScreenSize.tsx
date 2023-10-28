@@ -1,3 +1,5 @@
+'use client';
+
 import SCREEN_SIZES from '@/constants/screenSizes';
 import { useMediaQuery } from './useMediaQuery';
 
