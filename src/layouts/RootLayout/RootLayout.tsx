@@ -1,3 +1,4 @@
+import React, { PropsWithChildren } from 'react';
 import { Toaster } from '@/components/ui/Toaster/Toaster';
 import { cn } from '@/lib/utils';
 import AuthProvider from '@/providers/AuthProvider/AuthProvider';
@@ -6,7 +7,7 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { cookies } from 'next/headers';
-import React, { PropsWithChildren } from 'react';
+import SheetsOutlet from '@/outlets/SheetsOutlet/SheetsOutlet';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -36,6 +37,7 @@ async function RootLayout({ children }: Props) {
           <AuthProvider accessToken={accessToken}>
             {children}
             <Toaster />
+            <SheetsOutlet />
           </AuthProvider>
         </ReactQueryProvider>
       </body>

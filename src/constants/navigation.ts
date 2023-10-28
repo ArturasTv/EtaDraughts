@@ -6,7 +6,7 @@ type Navigation = {
 const NAVIGATION: Navigation[] = [
   {
     name: 'Home',
-    path: '/',
+    path: '/home',
   },
   {
     name: 'About',
@@ -14,7 +14,7 @@ const NAVIGATION: Navigation[] = [
   },
   {
     name: 'Contact',
-    path: '/contact',
+    path: '/',
   },
 ];
 
