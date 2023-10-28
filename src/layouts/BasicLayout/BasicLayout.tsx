@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import Header from '@/components/containers/Page/Header/Header';
+import Header from '@/components/containers/common/Header/Header';
 
 interface Props extends PropsWithChildren {}
 

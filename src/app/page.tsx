@@ -1,12 +1,12 @@
-import { Button } from '@/components/ui/Button/Button';
 import Page from '@/components/containers/Page/Page';
 import LogoutButton from './(partials)/LogoutButton';
+import MobileNavigationButton from './(partials)/MobileNavigationButton';
 
 export default function Home() {
   return (
     <Page permission='authenticated'>
       <main className='flex h-screen items-center justify-center'>
-        <Button>clean project</Button>
+        <MobileNavigationButton />
         <LogoutButton />
       </main>
     </Page>
