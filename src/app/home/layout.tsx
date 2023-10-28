@@ -1,12 +1,11 @@
+import '../globals.css';
+import BasicLayout from '@/layouts/BasicLayout/BasicLayout';
 import { PropsWithChildren } from 'react';
-import './globals.css';
-
-import RootLayout from '@/layouts/RootLayout/RootLayout';
 
 interface Props extends PropsWithChildren {}
 
 function Layout({ children }: Props) {
-  return <RootLayout>{children}</RootLayout>;
+  return <BasicLayout>{children}</BasicLayout>;
 }
 
 export default Layout;

@@ -29,7 +29,9 @@
     "@typescript-eslint"
   ],
   "rules": {
+    "operator-linebreak": "off",
     "no-console": "error",
+    "react/no-array-index-key": "off",
     "react/require-default-props": "off",
     "@typescript-eslint/no-explicit-any": "error",
     "react/prop-types": "off",
