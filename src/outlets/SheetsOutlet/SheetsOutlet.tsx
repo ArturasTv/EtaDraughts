@@ -1,8 +1,9 @@
 'use client';
 
+import React, { lazy, Suspense } from 'react';
 import DelayedRender from '@/components/containers/common/DelayedRender/DelayedRender';
 import useSheetStore from '@/stores/useSheetStore';
-import React, { lazy, Suspense } from 'react';
+import LoaderOverlay from '@/components/ui/LoaderOverlay/LoaderOverlay';
 
 const MobileNavigationSheet = lazy(
   () =>
@@ -18,7 +19,7 @@ function SheetsOutlet() {
     // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       <DelayedRender isOpen={mobileNavigation.isOpen}>
-        <Suspense fallback={null}>
+        <Suspense fallback={<LoaderOverlay />}>
           <MobileNavigationSheet />
         </Suspense>
       </DelayedRender>
