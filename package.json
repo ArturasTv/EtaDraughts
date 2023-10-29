@@ -28,6 +28,7 @@
     "husky": "^8.0.3",
     "lucide-react": "^0.279.0",
     "next": "latest",
+    "nextjs-toploader": "^1.5.3",
     "react": "latest",
     "react-dom": "latest",
     "react-hook-form": "^7.46.2",

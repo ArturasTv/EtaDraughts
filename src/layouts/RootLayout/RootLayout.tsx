@@ -8,6 +8,7 @@ import { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { cookies } from 'next/headers';
 import SheetsOutlet from '@/outlets/SheetsOutlet/SheetsOutlet';
+import TopLoader from '@/components/ui/TopLoader/TopLoader';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -33,6 +34,7 @@ async function RootLayout({ children }: Props) {
   return (
     <html className='h-full' lang='en'>
       <body className={cn(inter.className, 'flex h-full flex-col')}>
+        <TopLoader />
         <ReactQueryProvider>
           <AuthProvider accessToken={accessToken}>
             {children}
