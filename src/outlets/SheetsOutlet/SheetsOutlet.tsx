@@ -11,16 +11,26 @@ const MobileNavigationSheet = lazy(
       '@/components/containers/Sheets/MobileNavigationSheet/MobileNavigationSheet'
     ),
 );
+const UserProfileNavigationSheet = lazy(
+  () =>
+    import(
+      '@/components/containers/Sheets/UserProfileNavigationSheet/UserProfileNavigationSheet'
+    ),
+);
 
 function SheetsOutlet() {
-  const { mobileNavigation } = useSheetStore();
+  const { mobileNavigation, userProfileNavigation } = useSheetStore();
 
   return (
-    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       <DelayedRender isOpen={mobileNavigation.isOpen}>
         <Suspense fallback={<LoaderOverlay />}>
           <MobileNavigationSheet />
+        </Suspense>
+      </DelayedRender>
+      <DelayedRender isOpen={userProfileNavigation.isOpen}>
+        <Suspense fallback={<LoaderOverlay />}>
+          <UserProfileNavigationSheet />
         </Suspense>
       </DelayedRender>
     </>

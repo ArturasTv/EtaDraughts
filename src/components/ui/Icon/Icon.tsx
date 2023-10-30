@@ -4,9 +4,11 @@ import {
   IconLoader,
   IconMenu2,
   TablerIconsProps,
+  IconUserCircle,
+  IconLogout,
 } from '@tabler/icons-react';
 
-type IconNames = 'gmail' | 'loader' | 'menu';
+type IconNames = 'gmail' | 'loader' | 'menu' | 'user' | 'logout';
 type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 interface Props extends TablerIconsProps {
@@ -28,6 +30,8 @@ function Icon({ name, size = 'md', ...props }: Props) {
       {name === 'gmail' && <IconBrandGmail size={mapSize[size]} {...props} />}
       {name === 'loader' && <IconLoader size={mapSize[size]} {...props} />}
       {name === 'menu' && <IconMenu2 size={mapSize[size]} {...props} />}
+      {name === 'user' && <IconUserCircle size={mapSize[size]} {...props} />}
+      {name === 'logout' && <IconLogout size={mapSize[size]} {...props} />}
     </>
   );
 }

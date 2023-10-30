@@ -1,14 +1,15 @@
 import { create } from 'zustand';
 
+enum SheetNames {
+  mobileNavigation = 'mobileNavigation',
+  userProfileNavigation = 'userProfileNavigation',
+}
+
 type Sheet = {
   isOpen: boolean;
   open: () => void;
   close: () => void;
 };
-
-enum SheetNames {
-  mobileNavigation = 'mobileNavigation',
-}
 
 type SheetStore = Record<SheetNames, Sheet>;
 
@@ -22,6 +23,20 @@ const useSheetStore = create<SheetStore>()((set) => ({
     close: () =>
       set((state) => ({
         mobileNavigation: { ...state.mobileNavigation, isOpen: false },
+      })),
+  },
+  userProfileNavigation: {
+    isOpen: false,
+    open: () =>
+      set((state) => ({
+        userProfileNavigation: { ...state.userProfileNavigation, isOpen: true },
+      })),
+    close: () =>
+      set((state) => ({
+        userProfileNavigation: {
+          ...state.userProfileNavigation,
+          isOpen: false,
+        },
       })),
   },
 }));
