@@ -12,20 +12,26 @@ interface Props {
 }
 
 function MobileHeader({ className }: Props) {
-  const { mobileNavigation } = useSheetStore();
+  const { mobileNavigation, userProfileNavigation } = useSheetStore();
 
   return (
-    <div className={cn('flex justify-between py-4', className)}>
+    <header className={cn('flex justify-between py-4 shadow', className)}>
       <Button
-        variant='ghost'
-        className='-my-4 h-auto rounded-none'
+        variant='secondary'
+        className='-my-4 h-auto rounded-none px-4'
         onClick={() => mobileNavigation.open()}
       >
-        <Icon name='menu' size='xl' />
+        <Icon name='menu' size='lg' />
       </Button>
-      <Logo variant='dark' />
-      <div />
-    </div>
+      <Logo variant='dark' size='sm' />
+      <Button
+        variant='secondary'
+        className='-my-4 h-auto rounded-none px-4'
+        onClick={() => userProfileNavigation.open()}
+      >
+        <Icon name='user' size='lg' />
+      </Button>
+    </header>
   );
 }
 

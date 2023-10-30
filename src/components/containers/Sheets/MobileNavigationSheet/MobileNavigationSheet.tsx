@@ -21,7 +21,7 @@ function MobileNavigationSheet() {
     <Sheet open={mobileNavigation.isOpen} onOpenChange={handleOpenChange}>
       <SheetContent side='left'>
         <SheetHeader className='flex items-center justify-center'>
-          <Logo variant='dark' />
+          <Logo variant='dark' size='sm' />
         </SheetHeader>
         <MobileNavigation />
       </SheetContent>

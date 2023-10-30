@@ -3,7 +3,7 @@ type Navigation = {
   path: string;
 };
 
-const NAVIGATION: Navigation[] = [
+export const NAVIGATION: Navigation[] = [
   {
     name: 'Home',
     path: '/home',
@@ -18,4 +18,13 @@ const NAVIGATION: Navigation[] = [
   },
 ];
 
-export default NAVIGATION;
+export const USER_PROFILE_NAVIGATION: Navigation[] = [
+  {
+    name: 'Profile',
+    path: '/profile',
+  },
+  {
+    name: 'Settings',
+    path: '/settings',
+  },
+];

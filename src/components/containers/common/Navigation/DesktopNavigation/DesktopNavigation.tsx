@@ -4,7 +4,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from '@/components/ui/NavigationMenu/NavigationMenu';
-import NAVIGATION from '@/constants/navigation';
+import { NAVIGATION } from '@/constants/navigation';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import React from 'react';

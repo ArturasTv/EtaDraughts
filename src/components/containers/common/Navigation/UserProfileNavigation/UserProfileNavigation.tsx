@@ -1,25 +1,21 @@
-'use client';
-
 import { buttonVariants } from '@/components/ui/Button/Button';
+import { USER_PROFILE_NAVIGATION } from '@/constants/navigation';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
-import useSheetStore from '@/stores/useSheetStore';
-import { NAVIGATION } from '@/constants/navigation';
 
-function MobileNavigation() {
+interface Props {
+  handleLinkClick?: () => void;
+}
+
+function UserProfileNavigation({ handleLinkClick }: Props) {
   const pathname = usePathname();
-  const { mobileNavigation } = useSheetStore();
-
-  const handleLinkClick = () => {
-    mobileNavigation.close();
-  };
 
   return (
     <nav>
-      <ul className='flex flex-col space-y-2 pt-6'>
-        {NAVIGATION.map((item, index) => (
+      <ul className='flex flex-col space-y-2'>
+        {USER_PROFILE_NAVIGATION.map((item, index) => (
           <li key={index}>
             <Link
               href={item.path}
@@ -41,4 +37,4 @@ function MobileNavigation() {
   );
 }
 
-export default MobileNavigation;
+export default UserProfileNavigation;
