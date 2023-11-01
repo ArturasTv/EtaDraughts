@@ -5,9 +5,11 @@ import Icon from '@/components/ui/Icon/Icon';
 import Strike from '@/components/ui/Strike/Strike';
 import Typography from '@/components/ui/Typography/Typography';
 import Link from 'next/link';
+import AppRoutes from '@/constants/appRoutes';
 import SignUpFirstStepForm from './form/form';
 
 // TODO: remove spaces for text in Typography
+// TODO: be consistent with button text and icon placement
 function SignUpFirstStep() {
   return (
     <div className='w-96 space-y-6'>
@@ -27,14 +29,14 @@ function SignUpFirstStep() {
         By clicking continue, you agree to our{' '}
         <Link
           className='underline underline-offset-4 hover:text-primary'
-          href='/terms'
+          href={AppRoutes.AUTH.TERMS.INDEX}
         >
-          Terms of Service{' '}
-        </Link>
+          Terms of Service
+        </Link>{' '}
         and{' '}
         <Link
           className='underline underline-offset-4 hover:text-primary'
-          href='/privacy'
+          href={AppRoutes.AUTH.PRIVACY.INDEX}
         >
           Privacy Policy
         </Link>

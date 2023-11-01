@@ -9,17 +9,21 @@ import {
   IconCircleCheck,
   IconTrash,
   IconCircleX,
+  IconSettings,
+  IconUser,
 } from '@tabler/icons-react';
 
 export type IconNames =
   | 'gmail'
   | 'loader'
   | 'menu'
-  | 'user'
+  | 'user-circle'
   | 'logout'
   | 'check'
   | 'trash'
-  | 'cross';
+  | 'cross'
+  | 'settings'
+  | 'user';
 type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 interface Props extends TablerIconsProps {
@@ -41,11 +45,15 @@ function Icon({ name, size = 'md', ...props }: Props) {
       {name === 'gmail' && <IconBrandGmail size={mapSize[size]} {...props} />}
       {name === 'loader' && <IconLoader size={mapSize[size]} {...props} />}
       {name === 'menu' && <IconMenu2 size={mapSize[size]} {...props} />}
-      {name === 'user' && <IconUserCircle size={mapSize[size]} {...props} />}
+      {name === 'user-circle' && (
+        <IconUserCircle size={mapSize[size]} {...props} />
+      )}
       {name === 'logout' && <IconLogout size={mapSize[size]} {...props} />}
       {name === 'check' && <IconCircleCheck size={mapSize[size]} {...props} />}
       {name === 'trash' && <IconTrash size={mapSize[size]} {...props} />}
       {name === 'cross' && <IconCircleX size={mapSize[size]} {...props} />}
+      {name === 'settings' && <IconSettings size={mapSize[size]} {...props} />}
+      {name === 'user' && <IconUser size={mapSize[size]} {...props} />}
     </>
   );
 }

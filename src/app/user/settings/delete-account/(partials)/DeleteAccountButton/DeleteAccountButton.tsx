@@ -1,17 +1,17 @@
 'use client';
 
-import React from 'react';
 import { Button } from '@/components/ui/Button/Button';
+import React from 'react';
 import useModalStore from '@/stores/useModalStore';
 
-function DeleteUserButton() {
+function DeleteAccountButton() {
   const { deleteAccount } = useModalStore();
 
   return (
-    <Button variant='destructive' onClick={() => deleteAccount.open()}>
-      Delete user
+    <Button onClick={() => deleteAccount.open()} variant='destructive'>
+      Delete
     </Button>
   );
 }
 
-export default DeleteUserButton;
+export default DeleteAccountButton;

@@ -1,15 +1,16 @@
-import AuthLayout from '@/layouts/AuthLayout/AuthLayout';
+import '../globals.css';
+import BasicLayout from '@/layouts/BasicLayout/BasicLayout';
 import { Metadata } from 'next';
 import { PropsWithChildren } from 'react';
 
 export const metadata: Metadata = {
-  title: 'Authentication | Eta Draughts',
+  title: 'User Profile | Eta Draughts',
 };
 
 interface Props extends PropsWithChildren {}
 
 function Layout({ children }: Props) {
-  return <AuthLayout>{children}</AuthLayout>;
+  return <BasicLayout>{children}</BasicLayout>;
 }
 
 export default Layout;
