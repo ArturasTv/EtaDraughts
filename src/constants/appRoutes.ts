@@ -2,7 +2,25 @@ const AppRoutes = {
   ROOT: {
     INDEX: '/',
   },
+  HOME: {
+    INDEX: '/home',
+  },
+  USER: {
+    INDEX: '/user',
+    PROFILE: {
+      INDEX: '/user/profile',
+    },
+    SETTINGS: {
+      INDEX: '/user/settings',
+    },
+  },
   AUTH: {
+    TERMS: {
+      INDEX: '/auth/terms',
+    },
+    PRIVACY: {
+      INDEX: '/auth/privacy',
+    },
     SIGN_IN: {
       INDEX: '/auth/sign-in',
       PASSWORD_RECOVERY: {

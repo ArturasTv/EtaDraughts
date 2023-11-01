@@ -1,3 +1,5 @@
+import AppRoutes from './appRoutes';
+
 type Navigation = {
   name: string;
   path: string;
@@ -6,25 +8,17 @@ type Navigation = {
 export const NAVIGATION: Navigation[] = [
   {
     name: 'Home',
-    path: '/home',
-  },
-  {
-    name: 'About',
-    path: '/about',
-  },
-  {
-    name: 'Contact',
-    path: '/',
+    path: AppRoutes.HOME.INDEX,
   },
 ];
 
 export const USER_PROFILE_NAVIGATION: Navigation[] = [
   {
     name: 'Profile',
-    path: '/profile',
+    path: AppRoutes.USER.PROFILE.INDEX,
   },
   {
     name: 'Settings',
-    path: '/settings',
+    path: AppRoutes.USER.SETTINGS.INDEX,
   },
 ];

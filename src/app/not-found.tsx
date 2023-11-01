@@ -1,4 +1,5 @@
 import { buttonVariants } from '@/components/ui/Button/Button';
+import AppRoutes from '@/constants/appRoutes';
 import Link from 'next/link';
 
 export default function NotFound() {
@@ -17,7 +18,7 @@ export default function NotFound() {
               Sorry, we can&apos;t find that page. You&apos;ll find lots to
               explore on the home page.
             </p>
-            <Link className={buttonVariants()} href='/'>
+            <Link className={buttonVariants()} href={AppRoutes.ROOT.INDEX}>
               Back to Homepage
             </Link>
           </div>
