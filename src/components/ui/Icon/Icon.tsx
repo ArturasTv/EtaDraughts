@@ -6,9 +6,20 @@ import {
   TablerIconsProps,
   IconUserCircle,
   IconLogout,
+  IconCircleCheck,
+  IconTrash,
+  IconCircleX,
 } from '@tabler/icons-react';
 
-type IconNames = 'gmail' | 'loader' | 'menu' | 'user' | 'logout';
+export type IconNames =
+  | 'gmail'
+  | 'loader'
+  | 'menu'
+  | 'user'
+  | 'logout'
+  | 'check'
+  | 'trash'
+  | 'cross';
 type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 interface Props extends TablerIconsProps {
@@ -32,6 +43,9 @@ function Icon({ name, size = 'md', ...props }: Props) {
       {name === 'menu' && <IconMenu2 size={mapSize[size]} {...props} />}
       {name === 'user' && <IconUserCircle size={mapSize[size]} {...props} />}
       {name === 'logout' && <IconLogout size={mapSize[size]} {...props} />}
+      {name === 'check' && <IconCircleCheck size={mapSize[size]} {...props} />}
+      {name === 'trash' && <IconTrash size={mapSize[size]} {...props} />}
+      {name === 'cross' && <IconCircleX size={mapSize[size]} {...props} />}
     </>
   );
 }

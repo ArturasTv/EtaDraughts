@@ -7,6 +7,7 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { Inter } from 'next/font/google';
 import { cookies } from 'next/headers';
 import SheetsOutlet from '@/outlets/SheetsOutlet/SheetsOutlet';
+import ModalsOutlet from '@/outlets/ModalsOutlet/ModalsOutlet';
 import TopLoader from '@/components/ui/TopLoader/TopLoader';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -31,6 +32,7 @@ async function RootLayout({ children }: Props) {
             {children}
             <Toaster />
             <SheetsOutlet />
+            <ModalsOutlet />
           </AuthProvider>
         </ReactQueryProvider>
       </body>
