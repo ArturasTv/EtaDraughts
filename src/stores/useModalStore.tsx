@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
 enum ModalNames {
-  deleteUser = 'deleteUser',
+  deleteAccount = 'deleteAccount',
 }
 
 type Modal = {
@@ -14,19 +14,19 @@ type Modal = {
 type ModalStore = Record<ModalNames, Modal>;
 
 const useModalStore = create<ModalStore>()((set) => ({
-  deleteUser: {
+  deleteAccount: {
     isOpen: false,
     open: () =>
       set((state) => ({
-        deleteUser: { ...state.deleteUser, isOpen: true },
+        deleteAccount: { ...state.deleteAccount, isOpen: true },
       })),
     close: () =>
       set((state) => ({
-        deleteUser: { ...state.deleteUser, isOpen: false },
+        deleteAccount: { ...state.deleteAccount, isOpen: false },
       })),
     handleOpenChange: (isOpen: boolean) => {
       set((state) => ({
-        deleteUser: { ...state.deleteUser, isOpen },
+        deleteAccount: { ...state.deleteAccount, isOpen },
       }));
     },
   },

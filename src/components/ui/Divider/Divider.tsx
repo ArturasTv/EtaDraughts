@@ -1,7 +1,12 @@
 import React from 'react';
+import { cn } from '@/lib/utils';
 
-function Divider() {
-  return <hr className='h-[1px] w-full bg-gray-500' />;
+interface Props {
+  className?: string;
+}
+
+function Divider({ className }: Props) {
+  return <hr className={cn('h-[1px] w-full bg-gray-500', className)} />;
 }
 
 export default Divider;

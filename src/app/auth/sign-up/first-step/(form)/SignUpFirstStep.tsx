@@ -9,6 +9,7 @@ import AppRoutes from '@/constants/appRoutes';
 import SignUpFirstStepForm from './form/form';
 
 // TODO: remove spaces for text in Typography
+// TODO: be consistent with button text and icon placement
 function SignUpFirstStep() {
   return (
     <div className='w-96 space-y-6'>

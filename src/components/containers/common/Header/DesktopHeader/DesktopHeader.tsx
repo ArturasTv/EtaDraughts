@@ -27,7 +27,7 @@ function DesktopHeader({ className }: Props) {
         <UserProfilePopover
           trigger={
             <Button variant='outline' size='icon' className='rounded-full'>
-              <Icon name='user' size='lg' />
+              <Icon name='user-circle' size='lg' />
             </Button>
           }
         />

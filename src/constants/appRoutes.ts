@@ -12,6 +12,9 @@ const AppRoutes = {
     },
     SETTINGS: {
       INDEX: '/user/settings',
+      DELETE_ACCOUNT: {
+        INDEX: '/user/settings/delete-account',
+      },
     },
   },
   AUTH: {

@@ -5,22 +5,22 @@ import DelayedRender from '@/components/containers/common/DelayedRender/DelayedR
 import LoaderOverlay from '@/components/ui/LoaderOverlay/LoaderOverlay';
 import useModalStore from '@/stores/useModalStore';
 
-const DeleteUserModal = lazy(
+const DeleteAccountModal = lazy(
   () =>
     import(
-      '@/components/containers/Modals/common/DeleteUserModal/DeleteUserModal'
+      '@/components/containers/Modals/common/DeleteAccountModal/DeleteAccountModal'
     ),
 );
 
 function ModalsOutlet() {
-  const { deleteUser } = useModalStore();
+  const { deleteAccount } = useModalStore();
 
   return (
     // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
-      <DelayedRender isOpen={deleteUser.isOpen}>
+      <DelayedRender isOpen={deleteAccount.isOpen}>
         <Suspense fallback={<LoaderOverlay />}>
-          <DeleteUserModal />
+          <DeleteAccountModal />
         </Suspense>
       </DelayedRender>
     </>
