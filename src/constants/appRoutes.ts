@@ -2,6 +2,9 @@ const AppRoutes = {
   ROOT: {
     INDEX: '/',
   },
+  GAMES: {
+    INDEX: '/games',
+  },
   HOME: {
     INDEX: '/home',
   },
