@@ -1,9 +1,5 @@
 import Page from '@/components/containers/Page/Page';
 
 export default function Home() {
-  return (
-    <Page permission='authenticated'>
-      <div>Home</div>
-    </Page>
-  );
+  return <Page permission='authenticated' />;
 }

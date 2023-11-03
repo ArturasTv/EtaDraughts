@@ -18,6 +18,10 @@ export const NAVIGATION: Navigation[] = [
     name: 'Home',
     path: AppRoutes.HOME.INDEX,
   },
+  {
+    name: 'Games',
+    path: AppRoutes.GAMES.INDEX,
+  },
 ];
 
 export const USER_PROFILE_NAVIGATION: Navigation[] = [

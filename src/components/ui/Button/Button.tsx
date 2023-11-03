@@ -62,7 +62,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     if (isLoading) {
       return (
         <Component
-          className={cn(buttonVariants({ variant, size, className }))}
+          className={cn(buttonVariants({ variant, size, className }), {
+            'cursor-wait': isLoading,
+          })}
           ref={ref}
           disabled={isDisabled}
           {...props}
