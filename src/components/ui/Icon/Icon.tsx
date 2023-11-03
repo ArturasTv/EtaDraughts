@@ -9,8 +9,6 @@ import {
   IconCircleCheck,
   IconTrash,
   IconCircleX,
-  IconSettings,
-  IconUser,
   IconSortAscending,
   IconSortDescending,
   IconArrowsSort,
@@ -19,12 +17,15 @@ import {
   IconCirclePlus,
   IconArrowRight,
   IconChessQueen,
+  IconSettings,
+  IconUser,
 } from '@tabler/icons-react';
 
 export type IconNames =
   | 'gmail'
   | 'loader'
   | 'menu'
+  | 'user-circle'
   | 'user-circle'
   | 'logout'
   | 'check'
