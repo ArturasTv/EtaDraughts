@@ -4,7 +4,7 @@ import React from 'react';
 import { Row } from '@tanstack/react-table';
 import { Button } from '@/components/ui/Button/Button';
 import Icon from '@/components/ui/Icon/Icon';
-import { GameSchema } from '../../schema';
+import { TournamentSchema } from '../../schema';
 
 interface Props<TData> {
   row: Row<TData>;
@@ -13,11 +13,11 @@ interface Props<TData> {
 const currentUserId = '1';
 
 function Actions<TData>({ row }: Props<TData>) {
-  const game = GameSchema.parse(row.original);
+  const tournament = TournamentSchema.parse(row.original);
 
-  if (game.status === 'inProgress') return null;
+  if (tournament.status === 'inProgress') return null;
 
-  if (game.id === currentUserId) {
+  if (tournament.ownerUserId === currentUserId) {
     return (
       <Button
         variant='destructive'
