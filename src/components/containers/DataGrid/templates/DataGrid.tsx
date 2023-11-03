@@ -92,7 +92,8 @@ function DataGrid<TData, TValue>({
             >
               {row.getVisibleCells().map((cell) => (
                 <TableCell
-                  className={cn({
+                  className={cn('h-[64px]', {
+                    // TODO: Fix this in the future
                     'text-right': cell.id.split('_').at(-1) === 'actions',
                   })}
                   key={cell.id}

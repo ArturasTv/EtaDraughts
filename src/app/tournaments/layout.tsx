@@ -4,7 +4,7 @@ import { Metadata } from 'next';
 import { PropsWithChildren } from 'react';
 
 export const metadata: Metadata = {
-  title: 'Games | Eta Draughts',
+  title: 'Tournaments | Eta Draughts',
 };
 
 interface Props extends PropsWithChildren {}

@@ -22,6 +22,10 @@ export const NAVIGATION: Navigation[] = [
     name: 'Games',
     path: AppRoutes.GAMES.INDEX,
   },
+  {
+    name: 'Tournaments',
+    path: AppRoutes.TOURNAMENTS.INDEX,
+  },
 ];
 
 export const USER_PROFILE_NAVIGATION: Navigation[] = [

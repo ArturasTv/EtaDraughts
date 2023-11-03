@@ -2,24 +2,17 @@
 import { ColumnDef } from '@tanstack/react-table';
 import { formatSecondsToMinutesAndSeconds } from '@/lib/time';
 import { Badge } from '@/components/ui/Badge/Badge';
-import { Game, GameSchema } from './schema';
+import { Tournament, TournamentSchema } from './schema';
 import DataGridColumnHeader from '../../templates/Partials/DataGridColumnHeader/DataGridColumnHeader';
 import Actions, { HeaderAction } from './partials/Actions/Actions';
 
-export const columns: ColumnDef<Game>[] = [
+export const columns: ColumnDef<Tournament>[] = [
   {
-    accessorKey: 'user',
+    accessorKey: 'ownerUser',
     header: ({ column }) => (
-      <DataGridColumnHeader column={column} title='User' />
+      <DataGridColumnHeader column={column} title='Owner' />
     ),
-    cell: ({ row }) => <>{row.getValue('user')}</>,
-  },
-  {
-    accessorKey: 'rating',
-    header: ({ column }) => (
-      <DataGridColumnHeader column={column} title='Rating' />
-    ),
-    cell: ({ row }) => <>{row.getValue('rating')}</>,
+    cell: ({ row }) => <>{row.getValue('ownerUser')}</>,
   },
   {
     accessorKey: 'timeControl',
@@ -34,16 +27,30 @@ export const columns: ColumnDef<Game>[] = [
       return <>{formattedTime}</>;
     },
   },
+  {
+    accessorKey: 'currentPlayersAmount',
+    header: ({ column }) => (
+      <DataGridColumnHeader column={column} title='Players' />
+    ),
+    cell: ({ row }) => {
+      const tournament = TournamentSchema.parse(row.original);
 
+      return (
+        <>
+          {tournament.size}/{tournament.currentPlayersAmount}
+        </>
+      );
+    },
+  },
   {
     accessorKey: 'status',
     header: ({ column }) => (
       <DataGridColumnHeader column={column} title='Status' />
     ),
     cell: ({ row }) => {
-      const game = GameSchema.parse(row.original);
+      const tournament = TournamentSchema.parse(row.original);
 
-      const { status } = game;
+      const { status } = tournament;
 
       if (status === 'inProgress') {
         return <Badge variant='secondary'>In Progress</Badge>;
@@ -56,7 +63,6 @@ export const columns: ColumnDef<Game>[] = [
       return <>{status}</>;
     },
   },
-
   {
     id: 'actions',
     header: () => <HeaderAction />,
