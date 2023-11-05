@@ -12,11 +12,16 @@ function useValidation() {
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,50}$/,
       'Password must contain at least one uppercase letter, one lowercase letter, one number and one special character.',
     );
+  const fieldSelectRequired = z
+    .string()
+    .min(1, { message: 'This field is required.' })
+    .transform((v) => Number(v) || 0);
 
   return {
     fieldRequired,
     emailFieldRequired,
     passwordFieldRequired,
+    fieldSelectRequired,
   };
 }
 

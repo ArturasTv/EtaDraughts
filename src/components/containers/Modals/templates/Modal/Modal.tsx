@@ -49,7 +49,7 @@ function Modal({
           <DialogTitle>{title}</DialogTitle>
           {description && <DialogDescription>{description}</DialogDescription>}
         </DialogHeader>
-        <div>{children}</div>
+        <div className='h-full'>{children}</div>
         <DialogFooter className='gap-y-2'>
           {deleteAction && (
             <ModalAction

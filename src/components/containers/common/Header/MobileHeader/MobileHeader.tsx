@@ -4,7 +4,7 @@ import React from 'react';
 import Icon from '@/components/ui/Icon/Icon';
 import { Button } from '@/components/ui/Button/Button';
 import Logo from '@/components/ui/Logo/Logo';
-import useSheetStore from '@/stores/useSheetStore';
+import useSheetStore from '@/stores/ui/useSheetStore';
 import { cn } from '@/lib/utils';
 
 interface Props {

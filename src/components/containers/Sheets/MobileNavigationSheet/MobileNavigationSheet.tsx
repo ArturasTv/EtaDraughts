@@ -2,7 +2,7 @@
 
 import { Sheet, SheetContent, SheetHeader } from '@/components/ui/Sheet/Sheet';
 import React from 'react';
-import useSheetStore from '@/stores/useSheetStore';
+import useSheetStore from '@/stores/ui/useSheetStore';
 import Logo from '@/components/ui/Logo/Logo';
 import MobileNavigation from '../../common/Navigation/MobileNavigation/MobileNavigation';
 

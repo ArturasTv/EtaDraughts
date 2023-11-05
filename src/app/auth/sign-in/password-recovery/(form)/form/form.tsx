@@ -3,7 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import * as z from 'zod';
-import useValidation from '@/hooks/useValidation';
+import useValidation from '@/hooks/forms/useValidation';
 import { Button } from '@/components/ui/Button/Button';
 import { Form } from '@/components/ui/Form/Form';
 import { DEFAULT_EMAIL } from '@/constants/form';
