@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-no-useless-fragment */
+/* eslint-disable react/jsx-no-useless-fragment */
 import { ColumnDef } from '@tanstack/react-table';
 import { formatSecondsToMinutesAndSeconds } from '@/lib/time';
 import { Badge } from '@/components/ui/Badge/Badge';
