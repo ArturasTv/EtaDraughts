@@ -13,7 +13,7 @@ function NoResultsDisplay() {
         Where is no tournaments yet. Start by creating a new one.
       </Typography>
       <Button variant='default' onClick={() => null}>
-        <Icon name='circle-plus' className='h-4 w-4 sm:mr-2' />
+        <Icon name='circle-plus' className='mr-2 h-4 w-4' />
         Create
       </Button>
     </section>

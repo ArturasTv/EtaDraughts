@@ -33,6 +33,8 @@ interface Props<TData, TValue> {
   noResults?: ReactNode;
 }
 
+const PAGE_SIZE = 7;
+
 function DataGrid<TData, TValue>({
   columns,
   data,
@@ -45,8 +47,9 @@ function DataGrid<TData, TValue>({
     columns,
     initialState: {
       pagination: {
-        pageSize: 7,
+        pageSize: PAGE_SIZE,
       },
+      columnPinning: { right: ['actions'] },
     },
     state: {
       sorting,
@@ -114,7 +117,11 @@ function DataGrid<TData, TValue>({
           </TableRow>
         )}
       </TableBody>
-      <TableFooter>
+      <TableFooter
+        className={cn({
+          hidden: data.length < PAGE_SIZE,
+        })}
+      >
         <TableRow className='border-none'>
           <TableCell className='p-2 pr-0' colSpan={columns.length}>
             <DataGridPagination className='float-right' table={table} />

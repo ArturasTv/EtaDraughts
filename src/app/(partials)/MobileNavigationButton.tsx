@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/Button/Button';
 import React from 'react';
-import useSheetStore from '@/stores/useSheetStore';
+import useSheetStore from '@/stores/ui/useSheetStore';
 
 function MobileNavigationButton() {
   const { mobileNavigation } = useSheetStore();

@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
-import useSheetStore from '@/stores/useSheetStore';
+import useSheetStore from '@/stores/ui/useSheetStore';
 import { NAVIGATION } from '@/constants/navigation';
 
 function MobileNavigation() {

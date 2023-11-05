@@ -4,25 +4,28 @@ import React from 'react';
 import { Row } from '@tanstack/react-table';
 import { Button } from '@/components/ui/Button/Button';
 import Icon from '@/components/ui/Icon/Icon';
+import useGameLobby from '@/hooks/game/useGameLobby';
 import { GameSchema } from '../../schema';
 
 interface Props<TData> {
   row: Row<TData>;
 }
 
-const currentUserId = '1';
-
 function Actions<TData>({ row }: Props<TData>) {
   const game = GameSchema.parse(row.original);
 
+  const { hasCreatedGame, leaveCreatedGame, joinGame } = useGameLobby();
+
   if (game.status === 'inProgress') return null;
 
-  if (game.id === currentUserId) {
+  const MOCK_CURRENT_USER = 'Player 1';
+
+  if (hasCreatedGame && game.user === MOCK_CURRENT_USER) {
     return (
       <Button
         variant='destructive'
         size='sm'
-        onClick={() => null}
+        onClick={() => leaveCreatedGame()}
         className='-mr-3 h-8'
       >
         <Icon name='trash' className='h-4 w-4 sm:mr-2' />
@@ -35,7 +38,7 @@ function Actions<TData>({ row }: Props<TData>) {
     <Button
       variant='secondary'
       size='sm'
-      onClick={() => null}
+      onClick={() => joinGame(game.id)}
       className='-mr-3 h-8'
     >
       <span className='hidden sm:block'>Join</span>
@@ -45,17 +48,22 @@ function Actions<TData>({ row }: Props<TData>) {
 }
 
 export function HeaderAction() {
-  // TODO: Implement this logic: button should be hidded if user is alreadu created a game,
-  // or where is no games at all
-  const shouldShowCreateNewButton = true;
+  const { hasCreatedGame, createGame, games } = useGameLobby();
 
-  if (!shouldShowCreateNewButton) return null;
+  const payload = {
+    playerId: '1',
+    timeControl: 300,
+  };
+
+  const shouldRenderCreateButton = !hasCreatedGame && games.length > 0;
+
+  if (!shouldRenderCreateButton) return null;
 
   return (
     <Button
       variant='default'
       size='sm'
-      onClick={() => null}
+      onClick={() => createGame(payload)}
       className='-mr-3 h-8'
     >
       <Icon name='circle-plus' className='h-4 w-4 sm:mr-2' />

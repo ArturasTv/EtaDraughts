@@ -2,7 +2,7 @@
 
 import React, { lazy, Suspense } from 'react';
 import DelayedRender from '@/components/containers/common/DelayedRender/DelayedRender';
-import useSheetStore from '@/stores/useSheetStore';
+import useSheetStore from '@/stores/ui/useSheetStore';
 import LoaderOverlay from '@/components/ui/LoaderOverlay/LoaderOverlay';
 
 const MobileNavigationSheet = lazy(

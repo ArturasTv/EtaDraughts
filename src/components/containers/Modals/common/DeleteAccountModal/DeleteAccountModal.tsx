@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import useModalStore from '@/stores/useModalStore';
+import useModalStore from '@/stores/ui/useModalStore';
 import Modal from '../../templates/Modal/Modal';
 
 function DeleteAccountModal() {
