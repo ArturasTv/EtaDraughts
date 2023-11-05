@@ -5,6 +5,7 @@ import { Row } from '@tanstack/react-table';
 import { Button } from '@/components/ui/Button/Button';
 import Icon from '@/components/ui/Icon/Icon';
 import useGameLobby from '@/hooks/game/useGameLobby';
+import useModalStore from '@/stores/ui/useModalStore';
 import { GameSchema } from '../../schema';
 
 interface Props<TData> {
@@ -48,12 +49,9 @@ function Actions<TData>({ row }: Props<TData>) {
 }
 
 export function HeaderAction() {
-  const { hasCreatedGame, createGame, games } = useGameLobby();
+  const { createGame } = useModalStore();
 
-  const payload = {
-    playerId: '1',
-    timeControl: 300,
-  };
+  const { hasCreatedGame, games } = useGameLobby();
 
   const shouldRenderCreateButton = !hasCreatedGame && games.length > 0;
 
@@ -63,7 +61,7 @@ export function HeaderAction() {
     <Button
       variant='default'
       size='sm'
-      onClick={() => createGame(payload)}
+      onClick={() => createGame.open()}
       className='-mr-3 h-8'
     >
       <Icon name='circle-plus' className='h-4 w-4 sm:mr-2' />

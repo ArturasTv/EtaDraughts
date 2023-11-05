@@ -4,6 +4,7 @@ import React, { lazy, Suspense } from 'react';
 import DelayedRender from '@/components/containers/common/DelayedRender/DelayedRender';
 import LoaderOverlay from '@/components/ui/LoaderOverlay/LoaderOverlay';
 import useModalStore from '@/stores/ui/useModalStore';
+import CreateGameModal from '@/components/containers/Modals/common/CreateGameModal/CreateGameModal';
 
 const DeleteAccountModal = lazy(
   () =>
@@ -13,14 +14,18 @@ const DeleteAccountModal = lazy(
 );
 
 function ModalsOutlet() {
-  const { deleteAccount } = useModalStore();
+  const { deleteAccount, createGame } = useModalStore();
 
   return (
-    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       <DelayedRender isOpen={deleteAccount.isOpen}>
         <Suspense fallback={<LoaderOverlay />}>
           <DeleteAccountModal />
+        </Suspense>
+      </DelayedRender>
+      <DelayedRender isOpen={createGame.isOpen}>
+        <Suspense fallback={<LoaderOverlay />}>
+          <CreateGameModal />
         </Suspense>
       </DelayedRender>
     </>
