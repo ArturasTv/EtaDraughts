@@ -23,6 +23,9 @@ function SignUpFirstStepForm() {
   type ValidationSchema = z.infer<typeof FormSchema>;
 
   const form = useForm<ValidationSchema>({
+    defaultValues: {
+      email: '',
+    },
     resolver: zodResolver(FormSchema),
   });
 

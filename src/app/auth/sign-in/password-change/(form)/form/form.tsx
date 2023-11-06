@@ -25,6 +25,10 @@ function PasswordChangeForm() {
   type ValidationSchema = z.infer<typeof FormSchema>;
 
   const form = useForm<ValidationSchema>({
+    defaultValues: {
+      password: '',
+      confirmPassword: '',
+    },
     resolver: zodResolver(FormSchema),
   });
 

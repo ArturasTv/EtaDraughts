@@ -19,6 +19,10 @@ function SignInForm() {
   });
 
   const form = useForm<z.infer<typeof FormSchema>>({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
     resolver: zodResolver(FormSchema),
   });
 
