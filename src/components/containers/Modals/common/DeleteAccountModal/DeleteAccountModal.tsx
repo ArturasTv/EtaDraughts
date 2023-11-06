@@ -2,10 +2,22 @@
 
 import React from 'react';
 import useModalStore from '@/stores/ui/useModalStore';
+import LOCAL_STORAGE_KEYS from '@/constants/localStorage';
+import useDeleteAccount from '@/_api/mutations/deleteAccount';
 import Modal from '../../templates/Modal/Modal';
 
 function DeleteAccountModal() {
   const { deleteAccount } = useModalStore();
+
+  const userId = localStorage?.getItem(LOCAL_STORAGE_KEYS.USER_ID);
+
+  const { mutate, isPending: isLoading } = useDeleteAccount();
+
+  const handleSubmit = () => {
+    if (userId) {
+      mutate({ userId });
+    }
+  };
 
   return (
     <Modal
@@ -18,10 +30,11 @@ function DeleteAccountModal() {
         onClick: () => deleteAccount.close(),
       }}
       submitAction={{
-        onClick: () => deleteAccount.close(),
+        onClick: handleSubmit,
         variant: 'destructive',
         label: 'Delete',
         icon: 'trash',
+        isLoading,
       }}
       isOpen={deleteAccount.isOpen}
       size='sm'

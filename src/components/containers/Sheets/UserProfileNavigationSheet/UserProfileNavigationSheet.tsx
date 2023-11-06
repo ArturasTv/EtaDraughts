@@ -8,6 +8,7 @@ import Divider from '@/components/ui/Divider/Divider';
 import { Button } from '@/components/ui/Button/Button';
 import useSignOut from '@/_api/mutations/signOut';
 import Icon from '@/components/ui/Icon/Icon';
+import useGetUserDetails from '@/_api/queries/userDetails';
 import UserProfileNavigation from '../../common/Navigation/UserProfileNavigation/UserProfileNavigation';
 import UserInfo from '../../common/UserInfo/UserInfo';
 
@@ -22,9 +23,11 @@ function UserProfileNavigationSheet() {
     }
   };
 
+  const { data } = useGetUserDetails();
+
   const user = {
-    name: 'John Doe',
-    email: 'johndoe@example.com',
+    name: data?.name || '',
+    email: data?.email || '',
   };
 
   const { mutate, isPending: isLoading } = useSignOut();

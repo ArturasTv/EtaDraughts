@@ -46,6 +46,11 @@ function SignUpSecondStepForm() {
     mutate({
       email: values.email,
       password: values.password,
+      options: {
+        data: {
+          username: values.username,
+        },
+      },
     });
   };
 

@@ -10,6 +10,7 @@ import Divider from '@/components/ui/Divider/Divider';
 import { Button } from '@/components/ui/Button/Button';
 import Icon from '@/components/ui/Icon/Icon';
 import useSignOut from '@/_api/mutations/signOut';
+import useGetUserDetails from '@/_api/queries/userDetails';
 import UserProfileNavigation from '../Navigation/UserProfileNavigation/UserProfileNavigation';
 import UserInfo from '../UserInfo/UserInfo';
 
@@ -18,9 +19,11 @@ interface Props {
 }
 
 function UserProfilePopover({ trigger }: Props) {
+  const { data } = useGetUserDetails();
+
   const user = {
-    name: 'John Doe',
-    email: 'johndoe@example.com',
+    name: data?.name || '',
+    email: data?.email || '',
   };
 
   const { mutate, isPending: isLoading } = useSignOut();

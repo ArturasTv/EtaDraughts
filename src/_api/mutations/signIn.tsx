@@ -1,12 +1,11 @@
 import AppRoutes from '@/constants/appRoutes';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import LOCAL_STORAGE_KEYS from '@/constants/localStorage';
 import { SignInWithPasswordCredentials } from '@supabase/supabase-js';
 import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
+import supabase from '../common/supabase';
 
 const performSignIn = async (payload: SignInWithPasswordCredentials) => {
-  const supabase = createClientComponentClient();
-
   const { data, error } = await supabase.auth.signInWithPassword(payload);
 
   if (error) throw error;
@@ -19,7 +18,11 @@ export default function useSignIn() {
 
   return useMutation({
     mutationFn: performSignIn,
-    onSuccess: () => {
+    onSuccess: (response) => {
+      const { user } = response;
+
+      localStorage?.setItem(LOCAL_STORAGE_KEYS.USER_ID, user.id);
+
       router.push(AppRoutes.ROOT.INDEX);
     },
   });

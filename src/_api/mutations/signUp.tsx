@@ -1,13 +1,24 @@
-import AppRoutes from '@/constants/appRoutes';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import { SignUpWithPasswordCredentials } from '@supabase/supabase-js';
 import { useMutation } from '@tanstack/react-query';
-import { useRouter } from 'next/navigation';
 import { useToast } from '@/components/ui/Toaster/hooks/useToast';
+import AppRoutes from '@/constants/appRoutes';
+import { useRouter } from 'next/navigation';
+import supabase from '../common/supabase';
 
-const performSignUp = async (payload: SignUpWithPasswordCredentials) => {
-  const supabase = createClientComponentClient();
+interface Payload {
+  email: string;
+  password: string;
+  options?:
+    | {
+        emailRedirectTo?: string | undefined;
+        data: {
+          username: string;
+        };
+        captchaToken?: string | undefined;
+      }
+    | undefined;
+}
 
+const performSignUp = async (payload: Payload) => {
   const { data, error } = await supabase.auth.signUp(payload);
 
   if (error) throw error;
@@ -16,18 +27,18 @@ const performSignUp = async (payload: SignUpWithPasswordCredentials) => {
 };
 
 export default function useSignUp() {
-  const { toast } = useToast();
   const router = useRouter();
+
+  const { toast } = useToast();
 
   return useMutation({
     mutationFn: performSignUp,
     onSuccess: () => {
-      router.push(AppRoutes.AUTH.SIGN_IN.INDEX);
-
       toast({
         title: 'Sign up successful',
         description: 'Check your email for further instructions',
       });
+      router.push(AppRoutes.AUTH.SIGN_IN.INDEX);
     },
   });
 }

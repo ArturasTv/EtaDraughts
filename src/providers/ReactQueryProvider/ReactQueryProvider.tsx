@@ -8,12 +8,17 @@ import React, { PropsWithChildren, useState } from 'react';
 
 interface Props extends PropsWithChildren {}
 
+const DEFAULT_STALE_TIME = 1000 * 60 * 5;
+
 function ReactQueryProvider({ children }: Props) {
   const { toast } = useToast();
 
   const [client] = useState(
     new QueryClient({
       defaultOptions: {
+        queries: {
+          staleTime: DEFAULT_STALE_TIME,
+        },
         mutations: {
           onError: (error) => {
             toast({
