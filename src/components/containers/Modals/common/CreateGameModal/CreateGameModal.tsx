@@ -9,29 +9,19 @@ import useValidation from '@/hooks/forms/useValidation';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import useGameLobby from '@/hooks/game/useGameLobby';
+import LOCAL_STORAGE_KEYS from '@/constants/localStorage';
+import useGetTimeControls from '@/_api/queries/timeControls';
+import { formatSecondsToMinutesAndSeconds } from '@/lib/time';
 import Modal from '../../templates/Modal/Modal';
 
-// TODO: Receive time control options from backend
-const TimeControlOptions = [
-  {
-    label: '1:00',
-    value: '60',
-  },
-  {
-    label: '3:00',
-    value: '180',
-  },
-  {
-    label: '5:00',
-    value: '300',
-  },
-  {
-    label: '10:00',
-    value: '600',
-  },
-];
-
 function CreateGameModal() {
+  const { data } = useGetTimeControls();
+
+  const timeControlOptions = data?.map((timeControl) => ({
+    label: formatSecondsToMinutesAndSeconds(timeControl.initial_time || 0),
+    value: `${timeControl.initial_time}`,
+  }));
+
   const { createGame } = useGameLobby();
 
   const { createGame: createGameModal } = useModalStore();
@@ -49,8 +39,10 @@ function CreateGameModal() {
   });
 
   const onSubmit: SubmitHandler<ValidationSchema> = (values) => {
+    const userId = localStorage.getItem(LOCAL_STORAGE_KEYS.USER_ID) || '';
+
     const payload = {
-      playerId: 'Player 1',
+      playerId: userId,
       timeControl: values.timeControl,
     };
 
@@ -81,7 +73,7 @@ function CreateGameModal() {
           <FormFieldSelect
             name='timeControl'
             control={form.control}
-            options={TimeControlOptions}
+            options={timeControlOptions}
             placeholder='Time control'
           />
         </form>

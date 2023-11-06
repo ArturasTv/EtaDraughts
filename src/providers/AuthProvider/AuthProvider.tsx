@@ -3,6 +3,7 @@
 import { PropsWithChildren, createContext, useEffect } from 'react';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useRouter } from 'next/navigation';
+import { Database } from '@/types/supabase';
 
 export const AuthContext = createContext({});
 
@@ -11,7 +12,7 @@ interface Props extends PropsWithChildren {
 }
 
 function AuthProvider({ accessToken, children }: Props) {
-  const supabase = createClientComponentClient();
+  const supabase = createClientComponentClient<Database>();
   const router = useRouter();
 
   useEffect(() => {
