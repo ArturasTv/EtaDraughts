@@ -1,8 +1,8 @@
 import { useToast } from '@/components/ui/Toaster/hooks/useToast';
 import useModalStore from '@/stores/ui/useModalStore';
 import { useMutation } from '@tanstack/react-query';
-import useSignOut from './signOut';
-import supabase from '../common/supabase';
+import useSignOut from '../auth/signOut';
+import supabase from '../../common/supabase';
 
 type Payload = {
   userId: string;

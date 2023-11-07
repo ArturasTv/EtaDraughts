@@ -3,7 +3,7 @@ import LOCAL_STORAGE_KEYS from '@/constants/localStorage';
 import { SignInWithPasswordCredentials } from '@supabase/supabase-js';
 import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
-import supabase from '../common/supabase';
+import supabase from '../../common/supabase';
 
 const performSignIn = async (payload: SignInWithPasswordCredentials) => {
   const { data, error } = await supabase.auth.signInWithPassword(payload);

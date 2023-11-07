@@ -3,7 +3,7 @@
 import React from 'react';
 import useModalStore from '@/stores/ui/useModalStore';
 import LOCAL_STORAGE_KEYS from '@/constants/localStorage';
-import useDeleteAccount from '@/_api/mutations/deleteAccount';
+import useDeleteAccount from '@/clientApi/mutations/user/deleteAccount';
 import Modal from '../../templates/Modal/Modal';
 
 function DeleteAccountModal() {

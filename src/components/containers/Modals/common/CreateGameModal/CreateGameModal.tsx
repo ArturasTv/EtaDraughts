@@ -10,7 +10,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import useGameLobby from '@/hooks/game/useGameLobby';
 import LOCAL_STORAGE_KEYS from '@/constants/localStorage';
-import useGetTimeControls from '@/_api/queries/timeControls';
+import useGetTimeControls from '@/clientApi/queries/timeControls';
 import { formatSecondsToMinutesAndSeconds } from '@/lib/time';
 import Modal from '../../templates/Modal/Modal';
 

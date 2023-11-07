@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/Button/Button';
 import { Form } from '@/components/ui/Form/Form';
 import { useSearchParams } from 'next/navigation';
 import FormField from '@/components/ui/Form/FormField/FormField';
-import useSignUp from '@/_api/mutations/signUp';
+import useSignUp from '@/clientApi/mutations/auth/signUp';
 
 function SignUpSecondStepForm() {
   const searchParams = useSearchParams();

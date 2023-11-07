@@ -9,8 +9,8 @@ import {
 import Divider from '@/components/ui/Divider/Divider';
 import { Button } from '@/components/ui/Button/Button';
 import Icon from '@/components/ui/Icon/Icon';
-import useSignOut from '@/_api/mutations/signOut';
-import useGetUserDetails from '@/_api/queries/userDetails';
+import useSignOut from '@/clientApi/mutations/auth/signOut';
+import useGetUserDetails from '@/clientApi/queries/userDetails';
 import UserProfileNavigation from '../Navigation/UserProfileNavigation/UserProfileNavigation';
 import UserInfo from '../UserInfo/UserInfo';
 

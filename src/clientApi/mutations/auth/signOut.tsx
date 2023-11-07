@@ -2,7 +2,7 @@ import AppRoutes from '@/constants/appRoutes';
 import LOCAL_STORAGE_KEYS from '@/constants/localStorage';
 import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
-import supabase from '../common/supabase';
+import supabase from '../../common/supabase';
 
 const performSignOut = async () => {
   const { error } = await supabase.auth.signOut();
