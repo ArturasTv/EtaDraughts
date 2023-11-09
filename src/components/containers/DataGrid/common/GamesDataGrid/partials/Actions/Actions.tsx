@@ -4,8 +4,11 @@ import React from 'react';
 import { Row } from '@tanstack/react-table';
 import { Button } from '@/components/ui/Button/Button';
 import Icon from '@/components/ui/Icon/Icon';
-import useGameLobby from '@/hooks/game/useGameLobby';
+import useGameLobbyNew from '@/hooks/game/useGameLobbyNew';
 import useModalStore from '@/stores/ui/useModalStore';
+import useDeleteGame from '@/clientApi/mutations/game/deleteGame';
+import useGetUserDetails from '@/clientApi/queries/userDetails';
+import useJoinGame from '@/clientApi/mutations/game/joinGame';
 import { GameSchema } from '../../schema';
 
 interface Props<TData> {
@@ -15,18 +18,21 @@ interface Props<TData> {
 function Actions<TData>({ row }: Props<TData>) {
   const game = GameSchema.parse(row.original);
 
-  const { hasCreatedGame, leaveCreatedGame, joinGame } = useGameLobby();
+  const { data: userDetails } = useGetUserDetails();
+
+  const deleteGameMutation = useDeleteGame();
+  const joinGameMutation = useJoinGame();
+
+  const { hasCreatedGame, createdGame } = useGameLobbyNew();
 
   if (game.status === 'inProgress') return null;
 
-  const MOCK_CURRENT_USER = 'Player 1';
-
-  if (hasCreatedGame && game.user === MOCK_CURRENT_USER) {
+  if (hasCreatedGame && game.user === userDetails?.name) {
     return (
       <Button
         variant='destructive'
         size='sm'
-        onClick={() => leaveCreatedGame()}
+        onClick={() => deleteGameMutation.mutate({ game: createdGame })}
         className='-mr-3 h-8'
       >
         <Icon name='trash' className='h-4 w-4 sm:mr-2' />
@@ -39,7 +45,7 @@ function Actions<TData>({ row }: Props<TData>) {
     <Button
       variant='secondary'
       size='sm'
-      onClick={() => joinGame(game.id)}
+      onClick={() => joinGameMutation.mutate(game.id)}
       className='-mr-3 h-8'
     >
       <span className='hidden sm:block'>Join</span>
@@ -51,7 +57,8 @@ function Actions<TData>({ row }: Props<TData>) {
 export function HeaderAction() {
   const { createGame } = useModalStore();
 
-  const { hasCreatedGame, games } = useGameLobby();
+  const { games } = useGameLobbyNew();
+  const { hasCreatedGame } = useGameLobbyNew();
 
   const shouldRenderCreateButton = !hasCreatedGame && games.length > 0;
 

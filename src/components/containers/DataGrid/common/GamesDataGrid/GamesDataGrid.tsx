@@ -5,10 +5,10 @@
 'use client';
 
 import React, { useMemo } from 'react';
-import useGameLobby from '@/hooks/game/useGameLobby';
 import { Badge } from '@/components/ui/Badge/Badge';
 import { ColumnDef } from '@tanstack/react-table';
 import { formatSecondsToMinutesAndSeconds } from '@/lib/time';
+import useGameLobbyNew from '@/hooks/game/useGameLobbyNew';
 import DataGrid from '../../templates/DataGrid';
 import NoResultsDisplay from './partials/NoResultsDisplay/NoResultsDisplay';
 import DataGridColumnHeader from '../../templates/Partials/DataGridColumnHeader/DataGridColumnHeader';
@@ -16,7 +16,7 @@ import Actions, { HeaderAction } from './partials/Actions/Actions';
 import { Game, GameSchema } from './schema';
 
 function GamesDataGrid() {
-  const { games } = useGameLobby();
+  const { games } = useGameLobbyNew();
 
   const columns: ColumnDef<Game>[] = useMemo(
     () => [
@@ -27,7 +27,6 @@ function GamesDataGrid() {
         ),
         cell: ({ row }) => <>{row.getValue('user')}</>,
       },
-
       {
         accessorKey: 'rating',
         header: ({ column }) => (
@@ -48,7 +47,6 @@ function GamesDataGrid() {
           return <>{formattedTime}</>;
         },
       },
-
       {
         accessorKey: 'status',
         header: ({ column }) => (
@@ -70,7 +68,6 @@ function GamesDataGrid() {
           return <>{status}</>;
         },
       },
-
       {
         id: 'actions',
         header: () => <HeaderAction />,

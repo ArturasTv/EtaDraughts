@@ -30,7 +30,7 @@ function ModalAction({
       type={type}
       size='sm'
     >
-      {icon && !isLoading && <Icon name={icon} className='mr-2' />}
+      {icon && !isLoading && <Icon name={icon} className='mr-2 h-4 w-4' />}
       {label}
     </Button>
   );
