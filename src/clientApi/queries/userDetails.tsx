@@ -1,7 +1,7 @@
 import LOCAL_STORAGE_KEYS from '@/constants/localStorage';
 import { QUERIES } from '@/constants/queries';
 import { useQuery } from '@tanstack/react-query';
-import { getLocalStorageItem } from '@/lib/localstorage';
+import { getLocalStorageItem } from '@/lib/localStorage';
 import supabase from '../common/supabase';
 
 type Payload = {

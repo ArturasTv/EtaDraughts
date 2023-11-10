@@ -3,6 +3,7 @@ import LOCAL_STORAGE_KEYS from '@/constants/localStorage';
 import { SignInWithPasswordCredentials } from '@supabase/supabase-js';
 import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
+import { setLocalStorageItem } from '@/lib/localStorage';
 import supabase from '../../common/supabase';
 
 const performSignIn = async (payload: SignInWithPasswordCredentials) => {
@@ -21,7 +22,7 @@ export default function useSignIn() {
     onSuccess: (response) => {
       const { user } = response;
 
-      localStorage?.setItem(LOCAL_STORAGE_KEYS.USER_ID, user.id);
+      setLocalStorageItem(LOCAL_STORAGE_KEYS.USER_ID, user.id);
 
       router.push(AppRoutes.ROOT.INDEX);
     },

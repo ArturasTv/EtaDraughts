@@ -12,7 +12,7 @@ import LOCAL_STORAGE_KEYS from '@/constants/localStorage';
 import useGetTimeControls from '@/clientApi/queries/timeControls';
 import { formatSecondsToMinutesAndSeconds } from '@/lib/time';
 import useCreateGame from '@/clientApi/mutations/game/createGame';
-import { getLocalStorageItem } from '@/lib/localstorage';
+import { getLocalStorageItem } from '@/lib/localStorage';
 import Modal from '../../templates/Modal/Modal';
 
 function CreateGameModal() {
