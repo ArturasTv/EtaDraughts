@@ -4,12 +4,13 @@ import React from 'react';
 import useModalStore from '@/stores/ui/useModalStore';
 import LOCAL_STORAGE_KEYS from '@/constants/localStorage';
 import useDeleteAccount from '@/clientApi/mutations/user/deleteAccount';
+import { getLocalStorageItem } from '@/lib/localstorage';
 import Modal from '../../templates/Modal/Modal';
 
 function DeleteAccountModal() {
   const { deleteAccount } = useModalStore();
 
-  const userId = localStorage?.getItem(LOCAL_STORAGE_KEYS.USER_ID);
+  const userId = getLocalStorageItem<string>(LOCAL_STORAGE_KEYS.USER_ID) || '';
 
   const { mutate, isPending: isLoading } = useDeleteAccount();
 

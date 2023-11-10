@@ -12,6 +12,7 @@ import LOCAL_STORAGE_KEYS from '@/constants/localStorage';
 import useGetTimeControls from '@/clientApi/queries/timeControls';
 import { formatSecondsToMinutesAndSeconds } from '@/lib/time';
 import useCreateGame from '@/clientApi/mutations/game/createGame';
+import { getLocalStorageItem } from '@/lib/localstorage';
 import Modal from '../../templates/Modal/Modal';
 
 function CreateGameModal() {
@@ -39,7 +40,8 @@ function CreateGameModal() {
   });
 
   const onSubmit: SubmitHandler<ValidationSchema> = (values) => {
-    const userId = localStorage.getItem(LOCAL_STORAGE_KEYS.USER_ID) || '';
+    const userId =
+      getLocalStorageItem<string>(LOCAL_STORAGE_KEYS.USER_ID) || '';
 
     const payload = {
       playerId: userId,
