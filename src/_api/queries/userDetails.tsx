@@ -1,6 +1,7 @@
 import LOCAL_STORAGE_KEYS from '@/constants/localStorage';
 import { QUERIES } from '@/constants/queries';
 import { useQuery } from '@tanstack/react-query';
+import { getLocalStorageItem } from '@/lib/localstorage';
 import supabase from '../common/supabase';
 
 type Payload = {
@@ -22,7 +23,7 @@ const fetchUserDetails = async (payload: Payload) => {
 };
 
 function useGetUserDetails() {
-  const userId = localStorage?.getItem(LOCAL_STORAGE_KEYS.USER_ID) || '';
+  const userId = getLocalStorageItem<string>(LOCAL_STORAGE_KEYS.USER_ID) || '';
 
   const payload = { userId };
 
