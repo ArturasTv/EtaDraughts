@@ -7,7 +7,7 @@ import useValidation from '@/hooks/forms/useValidation';
 import { Button } from '@/components/ui/Button/Button';
 import { Form } from '@/components/ui/Form/Form';
 import FormField from '@/components/ui/Form/FormField/FormField';
-import useChangePassword from '@/_api/mutations/updatePassword';
+import useChangePassword from '@/clientApi/mutations/auth/updatePassword';
 
 function PasswordChangeForm() {
   const { passwordFieldRequired } = useValidation();

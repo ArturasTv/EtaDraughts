@@ -2,7 +2,7 @@ import { useMutation } from '@tanstack/react-query';
 import { useToast } from '@/components/ui/Toaster/hooks/useToast';
 import AppRoutes from '@/constants/appRoutes';
 import { useRouter } from 'next/navigation';
-import supabase from '../common/supabase';
+import supabase from '../../common/supabase';
 
 interface Payload {
   email: string;

@@ -1,11 +1,5 @@
-import { Room, RoomAvailable } from 'colyseus.js';
+import { Room } from 'colyseus.js';
 import { create } from 'zustand';
-import useColyseusStore from './useColyseusStore';
-
-type CreateOptions = {
-  playerId: string;
-  timeControl: number;
-};
 
 export type MetaData = {
   playerName: string;
@@ -15,66 +9,25 @@ export type MetaData = {
 };
 
 type Games = {
-  games: RoomAvailable<MetaData>[];
-  getAvailableGames: () => void;
   createdGame: Room<unknown> | null;
-  createGame: (options: CreateOptions) => void;
-  leaveCreatedGame: () => void;
+  setCreatedGame: (game: Room<unknown> | null) => void;
   joinedGame: Room<unknown> | null;
-  joinGame: (gameId: string) => void;
+  setJoinedGame: (game: Room<unknown> | null) => void;
 };
 
-const ROOM_NAME = 'game';
-
-const useGameLobbyStore = create<Games>()((set, get) => {
-  const { client } = useColyseusStore.getState();
-
-  return {
-    games: [],
-    getAvailableGames: async () => {
-      const result = await client.getAvailableRooms<MetaData>(ROOM_NAME);
-
-      set(() => ({
-        games: result,
-      }));
-    },
-    createdGame: null,
-    createGame: async (options) => {
-      const game = await client.create(ROOM_NAME, options);
-      const games = await client.getAvailableRooms<MetaData>(ROOM_NAME);
-
-      set(() => ({
-        createdGame: game,
-        games,
-      }));
-    },
-    leaveCreatedGame: async () => {
-      const { createdGame } = get();
-
-      createdGame?.leave();
-
-      const games = await client.getAvailableRooms<MetaData>(ROOM_NAME);
-
-      set(() => ({
-        createdGame: null,
-        games,
-      }));
-    },
-    joinedGame: null,
-    joinGame: async (gameId: string) => {
-      const game = await client.joinById(gameId);
-      const { createdGame } = get();
-
-      createdGame?.leave();
-      const games = await client.getAvailableRooms<MetaData>(ROOM_NAME);
-
-      set(() => ({
-        joinedGame: game,
-        createdGame: null,
-        games,
-      }));
-    },
-  };
-});
+const useGameLobbyStore = create<Games>()((set) => ({
+  createdGame: null,
+  setCreatedGame: (game) => {
+    set(() => ({
+      createdGame: game,
+    }));
+  },
+  joinedGame: null,
+  setJoinedGame: (game) => {
+    set(() => ({
+      joinedGame: game,
+    }));
+  },
+}));
 
 export default useGameLobbyStore;

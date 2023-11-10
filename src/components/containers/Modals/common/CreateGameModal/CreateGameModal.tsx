@@ -8,10 +8,10 @@ import { z } from 'zod';
 import useValidation from '@/hooks/forms/useValidation';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import useGameLobby from '@/hooks/game/useGameLobby';
 import LOCAL_STORAGE_KEYS from '@/constants/localStorage';
-import useGetTimeControls from '@/_api/queries/timeControls';
+import useGetTimeControls from '@/clientApi/queries/timeControls';
 import { formatSecondsToMinutesAndSeconds } from '@/lib/time';
+import useCreateGame from '@/clientApi/mutations/game/createGame';
 import Modal from '../../templates/Modal/Modal';
 
 function CreateGameModal() {
@@ -22,7 +22,7 @@ function CreateGameModal() {
     value: `${timeControl.initial_time}`,
   }));
 
-  const { createGame } = useGameLobby();
+  const { mutate, isPending: isLoading } = useCreateGame();
 
   const { createGame: createGameModal } = useModalStore();
 
@@ -46,9 +46,7 @@ function CreateGameModal() {
       timeControl: values.timeControl,
     };
 
-    createGame(payload);
-
-    createGameModal.close();
+    mutate(payload);
   };
 
   return (
@@ -63,6 +61,7 @@ function CreateGameModal() {
       }}
       submitAction={{
         onClick: form.handleSubmit(onSubmit),
+        isLoading,
         label: 'Create',
       }}
       isOpen={createGameModal.isOpen}

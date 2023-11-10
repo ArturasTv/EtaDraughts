@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/Button/Button';
 import { Form } from '@/components/ui/Form/Form';
 import { DEFAULT_EMAIL } from '@/constants/form';
 import FormField from '@/components/ui/Form/FormField/FormField';
-import useResetPassword from '@/_api/mutations/resetPassword';
+import useResetPassword from '@/clientApi/mutations/auth/resetPassword';
 
 function PasswordRecoveryForm() {
   const { emailFieldRequired } = useValidation();

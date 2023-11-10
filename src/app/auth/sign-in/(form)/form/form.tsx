@@ -8,7 +8,7 @@ import useValidation from '@/hooks/forms/useValidation';
 import { Button } from '@/components/ui/Button/Button';
 import { Form } from '@/components/ui/Form/Form';
 import FormField from '@/components/ui/Form/FormField/FormField';
-import useSignIn from '@/_api/mutations/signIn';
+import useSignIn from '@/clientApi/mutations/auth/signIn';
 
 function SignInForm() {
   const { fieldRequired, emailFieldRequired } = useValidation();

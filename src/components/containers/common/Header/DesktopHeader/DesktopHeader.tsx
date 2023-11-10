@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/Button/Button';
 import Icon from '@/components/ui/Icon/Icon';
 import Typography from '@/components/ui/Typography/Typography';
-import useGetUserDetails from '@/_api/queries/userDetails';
+import useGetUserDetails from '@/clientApi/queries/userDetails';
 import DesktopNavigation from '../../Navigation/DesktopNavigation/DesktopNavigation';
 import UserProfilePopover from '../../UserProfilePopover/UserProfilePopover';
 

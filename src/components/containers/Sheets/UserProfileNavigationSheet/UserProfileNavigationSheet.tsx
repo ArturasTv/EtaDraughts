@@ -6,9 +6,9 @@ import useSheetStore from '@/stores/ui/useSheetStore';
 import Logo from '@/components/ui/Logo/Logo';
 import Divider from '@/components/ui/Divider/Divider';
 import { Button } from '@/components/ui/Button/Button';
-import useSignOut from '@/_api/mutations/signOut';
+import useSignOut from '@/clientApi/mutations/auth/signOut';
 import Icon from '@/components/ui/Icon/Icon';
-import useGetUserDetails from '@/_api/queries/userDetails';
+import useGetUserDetails from '@/clientApi/queries/userDetails';
 import UserProfileNavigation from '../../common/Navigation/UserProfileNavigation/UserProfileNavigation';
 import UserInfo from '../../common/UserInfo/UserInfo';
 
