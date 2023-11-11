@@ -4,13 +4,16 @@ import { cn } from '@/lib/utils';
 import AuthProvider from '@/providers/AuthProvider/AuthProvider';
 import ReactQueryProvider from '@/providers/ReactQueryProvider/ReactQueryProvider';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { Inter } from 'next/font/google';
+import { Roboto } from 'next/font/google';
 import { cookies } from 'next/headers';
 import SheetsOutlet from '@/outlets/SheetsOutlet/SheetsOutlet';
 import ModalsOutlet from '@/outlets/ModalsOutlet/ModalsOutlet';
 import TopLoader from '@/components/ui/TopLoader/TopLoader';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Roboto({
+  subsets: ['latin-ext'],
+  weight: ['100', '300', '400', '500', '700', '900'],
+});
 
 interface Props extends PropsWithChildren {}
 
