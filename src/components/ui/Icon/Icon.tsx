@@ -19,6 +19,8 @@ import {
   IconChessQueen,
   IconSettings,
   IconUser,
+  IconHeartHandshake,
+  IconFlag,
 } from '@tabler/icons-react';
 
 export type IconNames =
@@ -40,7 +42,9 @@ export type IconNames =
   | 'chevron-right'
   | 'circle-plus'
   | 'arrow-right'
-  | 'queen';
+  | 'queen'
+  | 'handshake'
+  | 'flag';
 
 type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
@@ -79,6 +83,8 @@ function Icon({ name, size = 'md', ...props }: Props) {
       {name === 'circle-plus' && <IconCirclePlus size={mapSize[size]} {...props} />}
       {name === 'arrow-right' && <IconArrowRight size={mapSize[size]} {...props} />}
       {name === 'queen' && <IconChessQueen size={mapSize[size]} {...props} />}
+      {name === 'handshake' && <IconHeartHandshake size={mapSize[size]} {...props} />}
+      {name === 'flag' && <IconFlag size={mapSize[size]} {...props} />}
     </>
   );
 }
