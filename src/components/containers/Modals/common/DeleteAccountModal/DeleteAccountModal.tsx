@@ -4,7 +4,7 @@ import React from 'react';
 import useModalStore from '@/stores/ui/useModalStore';
 import LOCAL_STORAGE_KEYS from '@/constants/localStorage';
 import useDeleteAccount from '@/clientApi/mutations/user/deleteAccount';
-import { getLocalStorageItem } from '@/lib/localStorage';
+import { getLocalStorageItem } from '@/lib/localstorage';
 import Modal from '../../templates/Modal/Modal';
 
 function DeleteAccountModal() {
