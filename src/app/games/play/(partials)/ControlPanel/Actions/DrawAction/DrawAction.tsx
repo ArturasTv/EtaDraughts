@@ -27,8 +27,8 @@ function DrawAction() {
         handleOfferDraw();
       }}
     >
-      <Icon name='handshake' className='mr-2 h-4 w-4' />
-      Draw
+      <Icon name='handshake' className='h-4 w-4' />
+      <span className='ml-2 hidden sm:block'>Draw</span>
     </Button>
   );
 }

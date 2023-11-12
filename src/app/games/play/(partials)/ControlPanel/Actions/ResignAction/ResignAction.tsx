@@ -17,8 +17,8 @@ function ResignAction() {
         resignGame.open();
       }}
     >
-      <Icon name='flag' className='mr-2 h-4 w-4' />
-      Resign
+      <Icon name='flag' className='h-4 w-4' />
+      <span className='ml-2 hidden sm:block'>Resign</span>
     </Button>
   );
 }
