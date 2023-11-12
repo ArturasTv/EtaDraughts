@@ -3,7 +3,7 @@ import useColyseusStore from '@/stores/game/useColyseusStore';
 import { Client } from 'colyseus.js';
 import { QUERIES } from '@/constants/queries';
 import { useToast } from '@/components/ui/Toaster/hooks/useToast';
-import useGameLobbyStore from '@/stores/game/useGameLobbyStore';
+import useGameLobbyStore, { State } from '@/stores/game/useGameLobbyStore';
 import useDeleteGame from './deleteGame';
 
 type Payload = {
@@ -14,7 +14,7 @@ type Payload = {
 const joinGame = async (payload: Payload) => {
   const { client, roomId } = payload;
 
-  const result = await client.joinById(roomId, {});
+  const result = await client.joinById<State>(roomId, {});
 
   return result;
 };

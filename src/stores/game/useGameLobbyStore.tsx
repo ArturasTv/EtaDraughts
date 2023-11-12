@@ -1,6 +1,21 @@
 import { Room } from 'colyseus.js';
 import { create } from 'zustand';
 
+export type Status = 'waiting' | 'inProgress' | 'finished';
+
+export interface Player {
+  id: string;
+  name: string;
+  rating: number;
+}
+
+export interface State {
+  playerOne: Player;
+  playerTwo: Player;
+  status: Status;
+  timeControl: number;
+}
+
 export type MetaData = {
   playerName: string;
   rating: number;
@@ -9,10 +24,10 @@ export type MetaData = {
 };
 
 type Games = {
-  createdGame: Room<unknown> | null;
-  setCreatedGame: (game: Room<unknown> | null) => void;
-  joinedGame: Room<unknown> | null;
-  setJoinedGame: (game: Room<unknown> | null) => void;
+  createdGame: Room<State> | null;
+  setCreatedGame: (game: Room<State> | null) => void;
+  joinedGame: Room<State> | null;
+  setJoinedGame: (game: Room<State> | null) => void;
 };
 
 const useGameLobbyStore = create<Games>()((set) => ({
@@ -20,12 +35,14 @@ const useGameLobbyStore = create<Games>()((set) => ({
   setCreatedGame: (game) => {
     set(() => ({
       createdGame: game,
+      activeGame: game,
     }));
   },
   joinedGame: null,
   setJoinedGame: (game) => {
     set(() => ({
       joinedGame: game,
+      activeGame: game,
     }));
   },
 }));

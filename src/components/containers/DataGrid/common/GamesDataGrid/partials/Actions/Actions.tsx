@@ -4,7 +4,7 @@ import React from 'react';
 import { Row } from '@tanstack/react-table';
 import { Button } from '@/components/ui/Button/Button';
 import Icon from '@/components/ui/Icon/Icon';
-import useGameLobbyNew from '@/hooks/game/useGameLobbyNew';
+import useGameLobbyNew from '@/hooks/game/useGameLobby';
 import useModalStore from '@/stores/ui/useModalStore';
 import useDeleteGame from '@/clientApi/mutations/game/deleteGame';
 import useGetUserDetails from '@/clientApi/queries/userDetails';

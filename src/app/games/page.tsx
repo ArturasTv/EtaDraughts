@@ -1,5 +1,6 @@
 import Page from '@/components/containers/Page/Page';
 import GamesDataGrid from '@/components/containers/DataGrid/common/GamesDataGrid/GamesDataGrid';
+import StartGame from './(partials)/StartGame/StartGame';
 
 export default function Games() {
   return (
@@ -12,6 +13,7 @@ export default function Games() {
           </p>
         </div>
         <GamesDataGrid />
+        <StartGame />
       </main>
     </Page>
   );

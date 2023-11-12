@@ -6,7 +6,7 @@ export default function Play() {
   return (
     <Page permission='authenticated'>
       <div className='flex h-full w-full justify-center'>
-        <div className='flex h-auto'>
+        <div className='flex h-fit'>
           <Board />
           <ControlPanel />
         </div>

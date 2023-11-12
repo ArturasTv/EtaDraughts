@@ -2,10 +2,10 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { QUERIES } from '@/constants/queries';
 import { useToast } from '@/components/ui/Toaster/hooks/useToast';
 import { Room } from 'colyseus.js';
-import useGameLobbyStore from '@/stores/game/useGameLobbyStore';
+import useGameLobbyStore, { State } from '@/stores/game/useGameLobbyStore';
 
 type Payload = {
-  game: Room<unknown> | null;
+  game: Room<State> | null;
 };
 
 const deleteGame = async (payload: Payload) => {

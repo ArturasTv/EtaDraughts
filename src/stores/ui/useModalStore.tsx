@@ -3,6 +3,7 @@ import { create } from 'zustand';
 enum ModalNames {
   deleteAccount = 'deleteAccount',
   createGame = 'createGame',
+  resignGame = 'resignGame',
 }
 
 type Modal = {
@@ -44,6 +45,22 @@ const useModalStore = create<ModalStore>()((set) => ({
     handleOpenChange: (isOpen: boolean) => {
       set((state) => ({
         createGame: { ...state.createGame, isOpen },
+      }));
+    },
+  },
+  resignGame: {
+    isOpen: false,
+    open: () =>
+      set((state) => ({
+        resignGame: { ...state.resignGame, isOpen: true },
+      })),
+    close: () =>
+      set((state) => ({
+        resignGame: { ...state.resignGame, isOpen: false },
+      })),
+    handleOpenChange: (isOpen: boolean) => {
+      set((state) => ({
+        resignGame: { ...state.resignGame, isOpen },
       }));
     },
   },
