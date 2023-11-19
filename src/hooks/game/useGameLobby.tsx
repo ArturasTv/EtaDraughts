@@ -14,14 +14,9 @@ function formatGames(games?: RoomAvailable<MetaData>[]) {
   );
 }
 
-function useGameLobbyNew() {
+function useGameLobby() {
   const createdGame = useGameLobbyStore((state) => state.createdGame);
   const joinedGame = useGameLobbyStore((state) => state.joinedGame);
-
-  // eslint-disable-next-line no-console
-  console.log('createdGame', createdGame);
-  // eslint-disable-next-line no-console
-  console.log('joinedGame', joinedGame);
 
   const { data: unformattedGames } = useGetAvailableGames();
 
@@ -30,9 +25,9 @@ function useGameLobbyNew() {
   return {
     createdGame,
     hasCreatedGame: !!createdGame,
-    hadJoinedGame: !!joinedGame,
+    hasJoinedGame: !!joinedGame,
     games,
   };
 }
 
-export default useGameLobbyNew;
+export default useGameLobby;

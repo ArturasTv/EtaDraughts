@@ -4,6 +4,9 @@ const AppRoutes = {
   },
   GAMES: {
     INDEX: '/games',
+    PLAY: {
+      INDEX: '/games/play',
+    },
   },
   TOURNAMENTS: {
     INDEX: '/tournaments',

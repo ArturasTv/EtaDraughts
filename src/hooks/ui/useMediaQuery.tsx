@@ -2,40 +2,20 @@
 
 import { useEffect, useState } from 'react';
 
-export function useMediaQuery(query: string): boolean {
-  const getMatches = (currentQuery: string): boolean => {
-    if (typeof window !== 'undefined') {
-      return window.matchMedia(currentQuery).matches;
-    }
-    return false;
-  };
-
-  const [matches, setMatches] = useState<boolean>(getMatches(query));
-
-  function handleChange() {
-    setMatches(getMatches(query));
-  }
+export function useMediaQuery(query: string) {
+  const [matches, setMatches] = useState(false);
 
   useEffect(() => {
-    const matchMedia = window.matchMedia(query);
+    const media = window.matchMedia(query);
 
-    handleChange();
-
-    if (matchMedia.addListener) {
-      matchMedia.addListener(handleChange);
-    } else {
-      matchMedia.addEventListener('change', handleChange);
+    if (media.matches !== matches) {
+      setMatches(media.matches);
     }
 
-    return () => {
-      if (matchMedia.removeListener) {
-        matchMedia.removeListener(handleChange);
-      } else {
-        matchMedia.removeEventListener('change', handleChange);
-      }
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query]);
+    const listener = () => setMatches(media.matches);
+    media.addEventListener('change', listener);
+    return () => window.removeEventListener('change', listener);
+  }, [matches, query]);
 
   return matches;
 }

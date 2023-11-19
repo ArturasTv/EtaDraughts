@@ -5,7 +5,7 @@ import { QUERIES } from '@/constants/queries';
 import { useToast } from '@/components/ui/Toaster/hooks/useToast';
 import useModalStore from '@/stores/ui/useModalStore';
 import { formatSecondsToMinutesAndSeconds } from '@/lib/time';
-import useGameLobbyStore from '@/stores/game/useGameLobbyStore';
+import useGameLobbyStore, { State } from '@/stores/game/useGameLobbyStore';
 
 type CreateOptions = {
   playerId: string;
@@ -22,7 +22,7 @@ const ROOM_NAME = 'game';
 const createGame = async (payload: Payload) => {
   const { client, options } = payload;
 
-  const result = await client.create(ROOM_NAME, options);
+  const result = await client.create<State>(ROOM_NAME, options);
 
   return result;
 };
@@ -47,6 +47,8 @@ export default function useCreateGame() {
       });
 
       setCreatedGame(game);
+
+      // TODO: this message logic will be handled in backend
 
       game.onMessage('joined', (message: { player: string }) => {
         toast({
