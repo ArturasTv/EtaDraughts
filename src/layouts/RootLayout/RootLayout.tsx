@@ -9,6 +9,7 @@ import { cookies } from 'next/headers';
 import SheetsOutlet from '@/outlets/SheetsOutlet/SheetsOutlet';
 import ModalsOutlet from '@/outlets/ModalsOutlet/ModalsOutlet';
 import TopLoader from '@/components/ui/TopLoader/TopLoader';
+import FabsOutlet from '@/outlets/FabsOutlet/FabsOutlet';
 
 const inter = Roboto({
   subsets: ['latin-ext'],
@@ -36,6 +37,7 @@ async function RootLayout({ children }: Props) {
             <Toaster />
             <SheetsOutlet />
             <ModalsOutlet />
+            <FabsOutlet />
           </AuthProvider>
         </ReactQueryProvider>
       </body>

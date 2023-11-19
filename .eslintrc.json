@@ -44,6 +44,7 @@
     "jsx-quotes": ["error", "prefer-single"],
     "eslint-disable-next-line": "off",
     "object-curly-newline": "off",
+    "react/jsx-curly-newline": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
