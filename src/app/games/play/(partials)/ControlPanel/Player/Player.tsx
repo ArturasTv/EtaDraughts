@@ -4,16 +4,17 @@ import React from 'react';
 import { AvatarFallback } from '@/components/ui/Avatar/Avatar';
 import { getUserInitials } from '@/lib/user';
 import { Avatar } from '@radix-ui/react-avatar';
-import { formatSecondsToMinutesAndSeconds } from '@/lib/time';
 import { cn } from '@/lib/utils';
+import PlayerClock from './PlayerClock/PlayerClock';
 
 interface Props {
   name: string;
-  seconds: number;
+  timeLeft: number;
+  isActive: boolean;
   className?: string;
 }
 
-function Player({ name, seconds, className }: Props) {
+function Player({ name, timeLeft, isActive, className }: Props) {
   return (
     <section
       className={cn(
@@ -26,9 +27,7 @@ function Player({ name, seconds, className }: Props) {
           {getUserInitials(name)}
         </AvatarFallback>
       </Avatar>
-      <h3 className='pr-4 text-sm font-normal leading-6 text-muted-foreground'>
-        {formatSecondsToMinutesAndSeconds(seconds)}
-      </h3>
+      <PlayerClock isRunning={isActive} timeLeft={timeLeft} />
     </section>
   );
 }

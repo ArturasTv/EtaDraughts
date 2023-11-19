@@ -3,16 +3,25 @@ import { create } from 'zustand';
 
 export type Status = 'waiting' | 'inProgress' | 'finished';
 
+export interface Clock {
+  id: string;
+  timeLeft: number | null;
+  moveStart: number | null;
+  moveEnd: number | null;
+}
+
 export interface Player {
   id: string;
   name: string;
   rating: number;
+  clock: Clock;
 }
 
 export interface State {
   playerOne: Player;
   playerTwo: Player;
   status: Status;
+  turn: string;
   timeControl: number;
 }
 

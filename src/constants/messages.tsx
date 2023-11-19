@@ -7,6 +7,7 @@ export const MESSAGE_TYPES = {
   ACCEPT_DRAW: 'accept_draw',
   DECLINE_DRAW: 'decline_draw',
   RESIGN: 'resign',
+  GAME_START: 'game_start',
   GAME_OVER: 'game_over',
   DISCONNECT: 'disconnect',
   RECONNECT: 'reconnect',

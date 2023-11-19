@@ -45,7 +45,14 @@ function Actions<TData>({ row }: Props<TData>) {
     <Button
       variant='secondary'
       size='sm'
-      onClick={() => joinGameMutation.mutate(game.id)}
+      onClick={() =>
+        joinGameMutation.mutate({
+          roomId: game.id,
+          options: {
+            playerId: userDetails?.user_id || '',
+          },
+        })
+      }
       className='-mr-3 h-8'
     >
       <span className='hidden sm:block'>Join</span>
