@@ -110,7 +110,7 @@ function DataGrid<TData, TValue>({
           <TableRow>
             <TableCell
               colSpan={columns.length}
-              className='h-[calc(70vh)] text-center align-middle'
+              className='h-[calc(65vh)] text-center align-middle'
             >
               {noResults}
             </TableCell>
