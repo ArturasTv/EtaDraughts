@@ -15,7 +15,7 @@ import DataGridColumnHeader from '../../templates/Partials/DataGridColumnHeader/
 import Actions, { HeaderAction } from './partials/Actions/Actions';
 import { Game, GameSchema } from './schema';
 
-function GamesDataGrid() {
+function LobbyDataGrid() {
   const { games } = useGameLobbyNew();
 
   const columns: ColumnDef<Game>[] = useMemo(
@@ -84,4 +84,4 @@ function GamesDataGrid() {
   );
 }
 
-export default GamesDataGrid;
+export default LobbyDataGrid;

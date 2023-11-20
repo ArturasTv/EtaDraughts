@@ -1,7 +1,7 @@
 import Page from '@/components/containers/Page/Page';
-import GamesDataGrid from '@/components/containers/DataGrid/common/GamesDataGrid/GamesDataGrid';
+import LobbyDataGrid from '@/components/containers/DataGrid/common/LobbyDataGrid/LobbyDataGrid';
 
-export default function Games() {
+export default function Lobby() {
   return (
     <Page permission='authenticated'>
       <main className='space-y-4'>
@@ -11,7 +11,7 @@ export default function Games() {
             Join available games or create new one.
           </p>
         </div>
-        <GamesDataGrid />
+        <LobbyDataGrid />
       </main>
     </Page>
   );
