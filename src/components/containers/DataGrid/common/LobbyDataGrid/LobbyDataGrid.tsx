@@ -8,7 +8,7 @@ import React, { useMemo } from 'react';
 import { Badge } from '@/components/ui/Badge/Badge';
 import { ColumnDef } from '@tanstack/react-table';
 import { formatSecondsToMinutesAndSeconds } from '@/lib/time';
-import useGameLobbyNew from '@/hooks/game/useGameLobbyNew';
+import useGameLobbyNew from '@/hooks/game/useGameLobby';
 import DataGrid from '../../templates/DataGrid';
 import NoResultsDisplay from './partials/NoResultsDisplay/NoResultsDisplay';
 import DataGridColumnHeader from '../../templates/Partials/DataGridColumnHeader/DataGridColumnHeader';

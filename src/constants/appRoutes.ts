@@ -4,6 +4,9 @@ const AppRoutes = {
   },
   LOBBY: {
     INDEX: '/lobby',
+    PLAY: {
+      INDEX: '/lobby/play',
+    },
   },
   TOURNAMENTS: {
     INDEX: '/tournaments',
