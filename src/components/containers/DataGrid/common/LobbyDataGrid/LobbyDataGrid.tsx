@@ -8,24 +8,24 @@ import React, { useMemo } from 'react';
 import { Badge } from '@/components/ui/Badge/Badge';
 import { ColumnDef } from '@tanstack/react-table';
 import { formatSecondsToMinutesAndSeconds } from '@/lib/time';
-import useGetPlayedGames from '@/clientApi/queries/playedGames';
+import useGameLobbyNew from '@/hooks/game/useGameLobby';
 import DataGrid from '../../templates/DataGrid';
 import NoResultsDisplay from './partials/NoResultsDisplay/NoResultsDisplay';
 import DataGridColumnHeader from '../../templates/Partials/DataGridColumnHeader/DataGridColumnHeader';
-import Actions from './partials/Actions/Actions';
-import { PlayedGame, PlayedGameSchema } from './schema';
+import Actions, { HeaderAction } from './partials/Actions/Actions';
+import { Game, GameSchema } from './schema';
 
-function GamesDataGrid() {
-  const { data, isPending } = useGetPlayedGames();
+function LobbyDataGrid() {
+  const { games } = useGameLobbyNew();
 
-  const columns: ColumnDef<PlayedGame>[] = useMemo(
+  const columns: ColumnDef<Game>[] = useMemo(
     () => [
       {
-        accessorKey: 'opponent',
+        accessorKey: 'user',
         header: ({ column }) => (
-          <DataGridColumnHeader column={column} title='Opponent' />
+          <DataGridColumnHeader column={column} title='User' />
         ),
-        cell: ({ row }) => <>{row.getValue('opponent')}</>,
+        cell: ({ row }) => <>{row.getValue('user')}</>,
       },
       {
         accessorKey: 'rating',
@@ -48,53 +48,40 @@ function GamesDataGrid() {
         },
       },
       {
-        accessorKey: 'result',
+        accessorKey: 'status',
         header: ({ column }) => (
-          <DataGridColumnHeader column={column} title='Result' />
+          <DataGridColumnHeader column={column} title='Status' />
         ),
         cell: ({ row }) => {
-          const playedGame = PlayedGameSchema.parse(row.original);
+          const game = GameSchema.parse(row.original);
 
-          const { result } = playedGame;
+          const { status } = game;
 
-          if (result === 'draw') {
-            return (
-              <Badge className='bg-yellow-500 hover:bg-yellow-600'>Draw</Badge>
-            );
+          if (status === 'inProgress') {
+            return <Badge variant='secondary'>In Progress</Badge>;
           }
 
-          if (result === 'win') {
-            return (
-              <Badge className='bg-green-500 hover:bg-green-600'>Win</Badge>
-            );
+          if (status === 'waiting') {
+            return <Badge variant='default'>Waiting</Badge>;
           }
 
-          if (result === 'loss') {
-            return <Badge className='bg-red-500 hover:bg-red-600'>Loss</Badge>;
-          }
-
-          return null;
+          return <>{status}</>;
         },
       },
       {
         id: 'actions',
-        header: ({ column }) => (
-          <DataGridColumnHeader column={column} title='View' />
-        ),
+        header: () => <HeaderAction />,
         cell: ({ row }) => <Actions row={row} />,
       },
     ],
     [],
   );
 
+  const data = games;
+
   return (
-    <DataGrid
-      data={data || []}
-      isLoading={isPending}
-      columns={columns}
-      noResults={<NoResultsDisplay />}
-    />
+    <DataGrid data={data} columns={columns} noResults={<NoResultsDisplay />} />
   );
 }
 
-export default GamesDataGrid;
+export default LobbyDataGrid;

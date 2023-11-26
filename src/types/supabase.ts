@@ -9,6 +9,61 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      games: {
+        Row: {
+          black_player_id: string | null;
+          end_time: string | null;
+          game_id: number;
+          moves: string | null;
+          result: number | null;
+          start_time: string | null;
+          time_control_id: string | null;
+          white_player_id: string | null;
+        };
+        Insert: {
+          black_player_id?: string | null;
+          end_time?: string | null;
+          game_id?: number;
+          moves?: string | null;
+          result?: number | null;
+          start_time?: string | null;
+          time_control_id?: string | null;
+          white_player_id?: string | null;
+        };
+        Update: {
+          black_player_id?: string | null;
+          end_time?: string | null;
+          game_id?: number;
+          moves?: string | null;
+          result?: number | null;
+          start_time?: string | null;
+          time_control_id?: string | null;
+          white_player_id?: string | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'games_black_player_id_fkey';
+            columns: ['black_player_id'];
+            isOneToOne: false;
+            referencedRelation: 'profiles';
+            referencedColumns: ['user_id'];
+          },
+          {
+            foreignKeyName: 'games_time_control_id_fkey';
+            columns: ['time_control_id'];
+            isOneToOne: false;
+            referencedRelation: 'time_controls';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'games_white_player_id_fkey';
+            columns: ['white_player_id'];
+            isOneToOne: false;
+            referencedRelation: 'profiles';
+            referencedColumns: ['user_id'];
+          },
+        ];
+      };
       profiles: {
         Row: {
           created_at: string;
@@ -77,3 +132,8 @@ export interface Database {
     };
   };
 }
+
+export type Tables<T extends keyof Database['public']['Tables']> =
+  Database['public']['Tables'][T]['Row'];
+export type Enums<T extends keyof Database['public']['Enums']> =
+  Database['public']['Enums'][T];

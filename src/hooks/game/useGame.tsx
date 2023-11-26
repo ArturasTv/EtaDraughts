@@ -36,7 +36,7 @@ function useGame() {
   const joinedGame = useGameLobbyStore((state) => state.joinedGame);
 
   createdGame?.onMessage(MESSAGE_TYPES.GAME_START, () => {
-    router.push(AppRoutes.GAMES.PLAY.INDEX);
+    router.push(AppRoutes.LOBBY.PLAY.INDEX);
   });
 
   activeGame?.onMessage<CommonMessage>(MESSAGE_TYPES.COMMON, (message) => {

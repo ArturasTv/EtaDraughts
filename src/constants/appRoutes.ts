@@ -2,10 +2,10 @@ const AppRoutes = {
   ROOT: {
     INDEX: '/',
   },
-  GAMES: {
-    INDEX: '/games',
+  LOBBY: {
+    INDEX: '/lobby',
     PLAY: {
-      INDEX: '/games/play',
+      INDEX: '/lobby/play',
     },
   },
   TOURNAMENTS: {
@@ -16,6 +16,9 @@ const AppRoutes = {
   },
   USER: {
     INDEX: '/user',
+    GAMES: {
+      INDEX: '/user/games',
+    },
     PROFILE: {
       INDEX: '/user/profile',
     },
