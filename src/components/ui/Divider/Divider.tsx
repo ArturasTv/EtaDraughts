@@ -6,7 +6,7 @@ interface Props {
 }
 
 function Divider({ className }: Props) {
-  return <hr className={cn('h-[1px] w-full bg-gray-500', className)} />;
+  return <hr className={cn('h-[1px] w-full ', className)} />;
 }
 
 export default Divider;

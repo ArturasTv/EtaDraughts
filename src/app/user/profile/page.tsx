@@ -1,11 +1,10 @@
 import Page from '@/components/containers/Page/Page';
+import ProfileDetails from './(partials)/ProfileDetails/ProfileDetails';
 
 export default function UserProfile() {
   return (
     <Page permission='authenticated'>
-      <main className='flex h-screen items-center justify-center space-x-4'>
-        <p>User Profile</p>
-      </main>
+      <ProfileDetails />
     </Page>
   );
 }
