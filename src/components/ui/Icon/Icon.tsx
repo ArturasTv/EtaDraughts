@@ -21,6 +21,7 @@ import {
   IconUser,
   IconHeartHandshake,
   IconFlag,
+  IconEye,
 } from '@tabler/icons-react';
 
 export type IconNames =
@@ -44,7 +45,8 @@ export type IconNames =
   | 'arrow-right'
   | 'queen'
   | 'handshake'
-  | 'flag';
+  | 'flag'
+  | 'eye';
 
 type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
@@ -85,6 +87,7 @@ function Icon({ name, size = 'md', ...props }: Props) {
       {name === 'queen' && <IconChessQueen size={mapSize[size]} {...props} />}
       {name === 'handshake' && <IconHeartHandshake size={mapSize[size]} {...props} />}
       {name === 'flag' && <IconFlag size={mapSize[size]} {...props} />}
+      {name === 'eye' && <IconEye size={mapSize[size]} {...props} />}
     </>
   );
 }

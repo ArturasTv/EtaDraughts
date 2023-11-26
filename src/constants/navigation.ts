@@ -19,8 +19,8 @@ export const NAVIGATION: Navigation[] = [
     path: AppRoutes.HOME.INDEX,
   },
   {
-    name: 'Games',
-    path: AppRoutes.GAMES.INDEX,
+    name: 'Lobby',
+    path: AppRoutes.LOBBY.INDEX,
   },
   {
     name: 'Tournaments',
@@ -29,6 +29,10 @@ export const NAVIGATION: Navigation[] = [
 ];
 
 export const USER_PROFILE_NAVIGATION: Navigation[] = [
+  {
+    name: 'Games',
+    path: AppRoutes.USER.GAMES.INDEX,
+  },
   {
     name: 'Profile',
     path: AppRoutes.USER.PROFILE.INDEX,

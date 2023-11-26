@@ -1,11 +1,11 @@
 import { z } from 'zod';
 
-export const GameSchema = z.object({
+export const PlayedGameSchema = z.object({
   id: z.string(),
-  user: z.string(),
+  opponent: z.string(),
   rating: z.number(),
   timeControl: z.number(),
-  status: z.string(),
+  result: z.enum(['loss', 'draw', 'win']),
 });
 
-export type Game = z.infer<typeof GameSchema>;
+export type PlayedGame = z.infer<typeof PlayedGameSchema>;

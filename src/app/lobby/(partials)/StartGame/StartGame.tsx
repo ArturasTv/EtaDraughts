@@ -12,7 +12,7 @@ function StartGame() {
   const { activeGame } = useGame();
 
   if (activeGame) {
-    router.push(AppRoutes.GAMES.PLAY.INDEX);
+    router.push(AppRoutes.LOBBY.PLAY.INDEX);
   }
 
   return null;
